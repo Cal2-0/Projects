@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fintera • SIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0e13; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
+        .navbar { position: fixed; top:0; left:0; right:0; height:80px; background: rgba(10,14,19,0.9); backdrop-filter: blur(20px); border-bottom:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:space-between; padding:0 4rem; z-index:1000; }
+        .navbar.scrolled { background: rgba(10,14,19,0.95); border-bottom-color: rgba(0, 212, 170, 0.2); }
+        .logo { font-family:'Space Grotesk',sans-serif; font-size:1.6rem; font-weight:700; background: linear-gradient(135deg,#00ff94,#00d4aa); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+        .nav-links { display:flex; gap:0.5rem; list-style:none; }
+        .nav-link { padding:0.6rem 1.2rem; color:rgba(255,255,255,0.75); text-decoration:none; border-radius:10px; transition: .3s; }
+        .nav-link:hover { background: rgba(255,255,255,0.06); color:#fff; }
+        .nav-link.active { color:#00ff94; background: rgba(0,255,148,0.1); }
+        .hero { padding-top:120px; padding-bottom:40px; background: radial-gradient(circle at 30% 20%, rgba(0,255,148,0.1) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(0,212,170,0.05) 0%, transparent 50%); }
+        .container { max-width:1200px; margin:0 auto; padding:0 4rem; }
+        .title { font-family:'Space Grotesk',sans-serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight:800; background: linear-gradient(135deg,#ffffff,#00ff94); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+        .subtitle { color: rgba(255,255,255,0.8); font-size:1.1rem; margin-top:0.6rem; max-width:900px; }
+        .section { padding: 2rem 0 4rem; }
+        .section h2 { font-family:'Space Grotesk',sans-serif; color:#00ff94; margin-bottom: 1rem; }
+        .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.2rem; margin-top:1rem; }
+        .card { background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.06); border-radius:16px; overflow:hidden; transition:.3s; }
+        .card:hover { transform: translateY(-6px); border-color: rgba(0,255,148,0.25); box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
+        .card img { width:100%; height:160px; object-fit:cover; display:block; }
+        .card-body { padding: 1rem; }
+        .pill { background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:1rem; }
+        .reveal { opacity:0; transform: translateY(40px); transition: all .8s cubic-bezier(.4,0,.2,1); }
+        .reveal.active { opacity:1; transform: translateY(0); }
+        @media (max-width: 1024px) { .container { padding:0 2rem; } }
+        @media (max-width: 768px) { .container { padding:0 1rem; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">Fintera</div>
+        <ul class="nav-links">
+            <li><a class="nav-link" href="v2.html#home">Home</a></li>
+            <li><a class="nav-link" href="emi.html">EMI</a></li>
+            <li><a class="nav-link active" href="#">SIP</a></li>
+            <li><a class="nav-link" href="home-loan.html">Home Loan</a></li>
+            <li><a class="nav-link" href="tax.html">Tax</a></li>
+            <li><a class="nav-link" href="cards.html">Cards</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1 class="title reveal">SIP Growth</h1>
+            <p class="subtitle reveal">Build wealth steadily using SIP. Explore fund types, compare strategies, and visualize compounding.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section reveal">
+            <h2>Recommended SIP Plans</h2>
+            <div class="grid">
+                <div class="card"><img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200&auto=format&fit=crop" alt="Growth"/><div class="card-body"><strong>Large Cap Focus</strong><p>Stability with market leaders; suitable for beginners.</p></div></div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1515864201301-861f4918942b?q=80&w=1200&auto=format&fit=crop" alt="Chart"/><div class="card-body"><strong>Balanced Hybrid</strong><p>Mix of equity and debt for balanced risk-return.</p></div></div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" alt="Coins"/><div class="card-body"><strong>Mid/Small Cap</strong><p>Higher growth potential with higher volatility.</p></div></div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1567427013953-289c970b5f99?q=80&w=1200&auto=format&fit=crop" alt="Docs"/><div class="card-body"><strong>ELSS (80C)</strong><p>Tax-saving with 3-year lock-in; long-term wealth creation.</p></div></div>
+            </div>
+        </section>
+
+        <section class="section reveal">
+            <h2>Quick Guidance</h2>
+            <div class="grid">
+                <div class="pill"><strong>What to Look For</strong><p>Low expense ratio, consistent performance, clarity of mandate.</p></div>
+                <div class="pill"><strong>What to Avoid</strong><p>Chasing past returns, frequent fund switching, high churn.</p></div>
+                <div class="pill"><strong>How to Get Started</strong><p>Define goal & horizon, pick 1–2 funds, automate monthly SIP.</p></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const n = document.getElementById('navbar');
+            if (window.scrollY > 100) n.classList.add('scrolled'); else n.classList.remove('scrolled');
+        });
+        const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('active'); } }); }, {threshold:0.1, rootMargin:'0px 0px -50px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+        const FALLBACK = 'https://source.unsplash.com/1200x800/?investment,stocks,wealth';
+        document.querySelectorAll('img').forEach(img => { img.loading = 'lazy'; img.addEventListener('error', () => { img.src = FALLBACK; }); });
+    </script>
+</body>
+</html>

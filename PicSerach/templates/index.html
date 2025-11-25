@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapShop - Visual Shopping Assistant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #121212 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #1E88E5, #42A5F5);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(30, 136, 229, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .upload-section {
+            text-align: center;
+            margin: 80px 0;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section.has-image {
+            margin: 40px 0;
+        }
+
+        .upload-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(45deg, #1E88E5, #42A5F5);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(30, 136, 229, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(30, 136, 229, 0.5);
+        }
+
+        .upload-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .upload-button:hover::before {
+            left: 100%;
+        }
+
+        .upload-instructions {
+            margin-top: 20px;
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        #imageInput {
+            display: none;
+        }
+
+        .content-area {
+            display: none;
+            margin-top: 40px;
+            gap: 40px;
+            grid-template-columns: 1fr 2fr;
+            align-items: start;
+        }
+
+        .content-area.show {
+            display: grid;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .image-preview {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .image-preview img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .recognized-product {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(30, 136, 229, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #1E88E5;
+        }
+
+        .recognized-product h3 {
+            color: #1E88E5;
+            margin-bottom: 8px;
+        }
+
+        .recognized-product p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .results-section h2 {
+            margin-bottom: 30px;
+            color: #1E88E5;
+            font-size: 1.8rem;
+            font-weight: 300;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 136, 229, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(30, 136, 229, 0.2);
+            border-color: rgba(30, 136, 229, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1E88E5;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-seller {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stars {
+            color: #ffd700;
+            margin-right: 8px;
+        }
+
+        .rating-text {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .buy-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #1E88E5, #42A5F5);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(45deg, #1565C0, #1E88E5);
+            transform: translateY(-2px);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #1E88E5;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(30, 136, 229, 0.3);
+            border-radius: 50%;
+            border-top-color: #1E88E5;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 100px;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+
+            .content-area {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .upload-button {
+                padding: 18px 40px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo">SnapShop</h1>
+            <p class="tagline">Snap it. Know it. Buy it.</p>
+        </header>
+
+        <div class="upload-section" id="uploadSection">
+            <button class="upload-button" onclick="document.getElementById('imageInput').click()">
+                📸 Upload Product Image
+            </button>
+            <input type="file" id="imageInput" accept="image/*">
+            <p class="upload-instructions">Drag an image or click to upload</p>
+        </div>
+
+        <div class="content-area" id="contentArea">
+            <div class="image-preview">
+                <img id="previewImage" alt="Uploaded product">
+                <div class="recognized-product" id="recognizedProduct">
+                    <h3>Recognized Product</h3>
+                    <p id="productDescription">Analyzing image...</p>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h2>Product Results</h2>
+                <div id="loadingIndicator" class="loading">
+                    Finding the best deals for you
+                </div>
+                <div class="product-grid" id="productGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SnapShop. All rights reserved.</p>
+        <div style="margin-top: 10px;">
+            <a href="#" style="color: #666; text-decoration: none; margin: 0 15px;">About</a>
+            <a href="#" style="color: #666; text-decoration: none; margin: 0 15px;">Contact</a>
+            <a href="#" style="color: #666; text-decoration: none; margin: 0 15px;">Privacy</a>
+        </div>
+    </footer>
+
+    <script>
+        // Mock product database for demo
+        const mockProducts = {
+            'smartphone': [
+                { name: 'iPhone 15 Pro', price: '$999.99', seller: 'Apple Store', rating: 4.8, image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=300&h=200&fit=crop' },
+                { name: 'Samsung Galaxy S24', price: '$849.99', seller: 'Samsung', rating: 4.7, image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=300&h=200&fit=crop' },
+                { name: 'Google Pixel 8', price: '$699.99', seller: 'Google Store', rating: 4.6, image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=200&fit=crop' }
+            ],
+            'laptop': [
+                { name: 'MacBook Pro 16"', price: '$2,399.99', seller: 'Apple', rating: 4.9, image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=200&fit=crop' },
+                { name: 'Dell XPS 15', price: '$1,799.99', seller: 'Dell', rating: 4.7, image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=300&h=200&fit=crop' },
+                { name: 'ThinkPad X1 Carbon', price: '$1,649.99', seller: 'Lenovo', rating: 4.6, image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=300&h=200&fit=crop' }
+            ],
+            'headphones': [
+                { name: 'AirPods Pro 2', price: '$249.99', seller: 'Apple', rating: 4.8, image: 'https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=300&h=200&fit=crop' },
+                { name: 'Sony WH-1000XM5', price: '$399.99', seller: 'Sony', rating: 4.9, image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=300&h=200&fit=crop' },
+                { name: 'Bose QuietComfort', price: '$329.99', seller: 'Bose', rating: 4.7, image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300&h=200&fit=crop' }
+            ],
+            'default': [
+                { name: 'Product Match 1', price: '$99.99', seller: 'Amazon', rating: 4.5, image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop' },
+                { name: 'Product Match 2', price: '$149.99', seller: 'eBay', rating: 4.3, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=200&fit=crop' },
+                { name: 'Product Match 3', price: '$199.99', seller: 'Walmart', rating: 4.6, image: 'https://images.unsplash.com/photo-1549062572-544a64fb0c56?w=300&h=200&fit=crop' }
+            ]
+        };
+
+        document.getElementById('imageInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                handleImageUpload(file);
+            }
+        });
+
+        function handleImageUpload(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        // Show content area
+        document.getElementById('contentArea').classList.add('show');
+        document.getElementById('uploadSection').classList.add('has-image');
+
+        // Display preview immediately
+        const previewImg = document.getElementById('previewImage');
+        previewImg.src = e.target.result;
+
+        // Send image to Flask for recognition
+        const formData = new FormData();
+        formData.append('file', file);
+
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('productDescription').textContent = `Detected: ${data.recognized_label}`;
+            window.currentProductType = data.recognized_label;
+
+            // Display mock products based on recognized label
+            setTimeout(() => {
+                displayProductResults();
+            }, 500);
+        })
+        .catch(err => {
+            console.error('Error:', err);
+            document.getElementById('productDescription').textContent = 'Recognition failed.';
+        });
+    };
+    reader.readAsDataURL(file);
+}
+
+
+        function recognizeProduct(filename) {
+            const descriptions = {
+                'smartphone': 'Apple iPhone or similar smartphone device',
+                'laptop': 'Laptop computer with premium design',
+                'headphones': 'Wireless noise-canceling headphones',
+                'default': 'Consumer electronic product'
+            };
+
+            // Simple mock recognition based on filename or random
+            let productType = 'default';
+            const name = filename.toLowerCase();
+            if (name.includes('phone') || name.includes('iphone') || name.includes('mobile')) {
+                productType = 'smartphone';
+            } else if (name.includes('laptop') || name.includes('macbook') || name.includes('computer')) {
+                productType = 'laptop';
+            } else if (name.includes('headphone') || name.includes('airpod') || name.includes('audio')) {
+                productType = 'headphones';
+            }
+
+            document.getElementById('productDescription').textContent = descriptions[productType];
+            
+            // Store the recognized type for results
+            window.currentProductType = productType;
+        }
+
+        function displayProductResults() {
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const productGrid = document.getElementById('productGrid');
+            
+            // Hide loading indicator
+            loadingIndicator.style.display = 'none';
+            
+            // Get products based on recognition
+            const productType = window.currentProductType || 'default';
+            const products = mockProducts[productType] || mockProducts.default;
+            
+            // Create product cards
+            productGrid.innerHTML = '';
+            products.forEach((product, index) => {
+                const card = createProductCard(product);
+                card.style.animationDelay = `${index * 0.1}s`;
+                productGrid.appendChild(card);
+            });
+        }
+
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card fade-in';
+            
+            const stars = '★'.repeat(Math.floor(product.rating)) + '☆'.repeat(5 - Math.floor(product.rating));
+            
+            card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="product-image">
+                <h3 class="product-name">${product.name}</h3>
+                <div class="product-price">${product.price}</div>
+                <div class="product-seller">Sold by ${product.seller}</div>
+                <div class="rating">
+                    <span class="stars">${stars}</span>
+                    <span class="rating-text">${product.rating}/5</span>
+                </div>
+                <button class="buy-button" onclick="window.open('#', '_blank')">Buy Now</button>
+            `;
+            
+            return card;
+        }
+
+        // Add drag and drop functionality
+        const uploadSection = document.getElementById('uploadSection');
+        
+        uploadSection.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadSection.style.opacity = '0.8';
+        });
+        
+        uploadSection.addEventListener('dragleave', () => {
+            uploadSection.style.opacity = '1';
+        });
+        
+        uploadSection.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadSection.style.opacity = '1';
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type.startsWith('image/')) {
+                handleImageUpload(files[0]);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fintera — Your Personal Financial Companion</title>
+    <meta name="description" content="Explore tools, learn smart investing, and plan your future with Fintera." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-cyan-300 selection:text-slate-900" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;">
+
+    <!-- App Shell -->
+    <div class="relative min-h-screen">
+      <!-- Animated Background Layers -->
+      <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div class="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-500/30 via-blue-500/20 to-fuchsia-500/10 blur-3xl animate-pulse"></div>
+        <div class="absolute -bottom-48 -right-32 h-[28rem] w-[28rem] rounded-full bg-gradient-to-br from-emerald-500/20 via-teal-500/20 to-cyan-500/10 blur-3xl animate-pulse"></div>
+        <div class="absolute top-1/4 right-1/3 h-64 w-64 rounded-full bg-gradient-to-tr from-violet-500/20 via-fuchsia-500/10 to-cyan-500/10 blur-2xl animate-pulse"></div>
+      </div>
+
+      <!-- Header -->
+      <header class="sticky top-0 z-40 w-full backdrop-blur supports-[backdrop-filter]:bg-slate-950/60 bg-slate-950/50 border-b border-white/10">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex h-16 items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+              <div class="flex h-8 w-8 items-center justify-center rounded-md bg-white/5 ring-1 ring-white/10 group-hover:ring-white/20 transition">
+                <span class="text-sm font-semibold tracking-tight">F</span>
+              </div>
+              <span class="text-base font-semibold tracking-tight">Fintera</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-7">
+              <a href="#learn" class="text-sm text-slate-300 hover:text-white transition-colors">Learn</a>
+              <a href="#tools" class="text-sm text-slate-300 hover:text-white transition-colors">Tools</a>
+              <a href="#student" class="text-sm text-slate-300 hover:text-white transition-colors">Student</a>
+              <a href="#stocks" class="text-sm text-slate-300 hover:text-white transition-colors">Stocks Advisor</a>
+              <a href="#chatbot" class="text-sm text-slate-300 hover:text-white transition-colors">Chatbot</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="hidden md:flex items-center gap-3">
+              <!-- Language Toggle -->
+              <div class="flex items-center rounded-lg bg-white/5 ring-1 ring-white/10 overflow-hidden">
+                <button data-lang="EN" class="px-3 py-1.5 text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">EN</button>
+                <button data-lang="HI" class="px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">HI</button>
+                <button data-lang="TA" class="px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">Tamil</button>
+              </div>
+
+              <!-- Search -->
+              <button id="searchBtn" class="inline-flex items-center justify-center h-9 w-9 rounded-md bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400" aria-label="Search">
+                <i data-lucide="search" class="h-4 w-4"></i>
+              </button>
+            </div>
+
+            <!-- Mobile Trigger -->
+            <button id="menuBtn" class="md:hidden inline-flex items-center justify-center h-9 w-9 rounded-md bg-white/5 ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400" aria-label="Toggle Menu">
+              <i data-lucide="menu" class="h-5 w-5"></i>
+            </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div id="mobileMenu" class="md:hidden hidden border-t border-white/10">
+            <div class="py-3 space-y-1">
+              <a href="#learn" class="block px-2 py-2 text-sm text-slate-300 hover:text-white">Learn</a>
+              <a href="#tools" class="block px-2 py-2 text-sm text-slate-300 hover:text-white">Tools</a>
+              <a href="#student" class="block px-2 py-2 text-sm text-slate-300 hover:text-white">Student</a>
+              <a href="#stocks" class="block px-2 py-2 text-sm text-slate-300 hover:text-white">Stocks Advisor</a>
+              <a href="#chatbot" class="block px-2 py-2 text-sm text-slate-300 hover:text-white">Chatbot</a>
+              <div class="px-2 pt-2">
+                <div class="flex w-full items-center rounded-lg bg-white/5 ring-1 ring-white/10 overflow-hidden">
+                  <button data-lang="EN" class="flex-1 px-3 py-1.5 text-xs font-medium text-white/80 hover:text-white hover:bg-white/5">EN</button>
+                  <button data-lang="HI" class="flex-1 px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white hover:bg-white/5">HI</button>
+                  <button data-lang="TA" class="flex-1 px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white hover:bg-white/5">Tamil</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="relative">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 pt-14 pb-10">
+            <!-- Copy -->
+            <div class="relative">
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
+                Your Personal Financial Companion
+              </h1>
+              <p class="mt-4 text-base sm:text-lg text-slate-300">
+                Explore tools, learn smart investing, and plan your future.
+              </p>
+
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a href="#tools" class="inline-flex items-center gap-2 rounded-md bg-cyan-500/90 px-4 py-2.5 text-sm font-medium text-slate-900 hover:bg-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                  <i data-lucide="wrench" class="h-4 w-4"></i>
+                  <span>Explore Tools</span>
+                </a>
+                <a href="#learn" class="inline-flex items-center gap-2 rounded-md bg-white/5 px-4 py-2.5 text-sm font-medium text-white ring-1 ring-white/10 hover:bg-white/10 hover:ring-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                  <i data-lucide="graduation-cap" class="h-4 w-4"></i>
+                  <span>Start Learning</span>
+                </a>
+              </div>
+
+              <!-- Floating Icons -->
+              <div class="pointer-events-none absolute -left-6 top-36 hidden sm:block">
+                <div class="flex gap-3">
+                  <div class="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 flex items-center justify-center animate-bounce">
+                    <i data-lucide="coins" class="h-4 w-4 text-yellow-300"></i>
+                  </div>
+                  <div class="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 flex items-center justify-center animate-pulse">
+                    <i data-lucide="line-chart" class="h-4 w-4 text-cyan-300"></i>
+                  </div>
+                  <div class="h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 flex items-center justify-center animate-bounce">
+                    <i data-lucide="bar-chart-3" class="h-4 w-4 text-emerald-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual Panel -->
+            <div class="relative">
+              <div class="relative h-full">
+                <div class="rounded-xl bg-gradient-to-b from-white/[0.04] to-white/[0.02] ring-1 ring-white/10 p-5 backdrop-blur">
+                  <div class="grid grid-cols-2 gap-4">
+                    <!-- Mini Card -->
+                    <div class="rounded-lg bg-white/[0.03] ring-1 ring-white/10 p-4">
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs text-slate-300">Net Worth</span>
+                        <i data-lucide="wallet" class="h-4 w-4 text-cyan-300"></i>
+                      </div>
+                      <p class="mt-2 text-2xl font-semibold tracking-tight">$42,560</p>
+                      <p class="text-xs text-emerald-300 mt-1">+4.1% this month</p>
+                    </div>
+                    <div class="rounded-lg bg-white/[0.03] ring-1 ring-white/10 p-4">
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs text-slate-300">Budget</span>
+                        <i data-lucide="pie-chart" class="h-4 w-4 text-fuchsia-300"></i>
+                      </div>
+                      <p class="mt-2 text-2xl font-semibold tracking-tight">72% used</p>
+                      <p class="text-xs text-amber-300 mt-1">On track</p>
+                    </div>
+
+                    <!-- Chart Card -->
+                    <div class="col-span-2 rounded-lg bg-white/[0.03] ring-1 ring-white/10 p-4">
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs text-slate-300">SIP Growth</span>
+                        <i data-lucide="trending-up" class="h-4 w-4 text-emerald-300"></i>
+                      </div>
+                      <p class="mt-1 text-sm text-slate-300">Projected portfolio value</p>
+                      <div class="mt-3">
+                        <div class="relative w-full h-28">
+                          <canvas id="heroChart" class="absolute inset-0"></canvas>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="rounded-lg bg-white/[0.03] ring-1 ring-white/10 p-4">
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs text-slate-300">Credit Score</span>
+                        <i data-lucide="shield-check" class="h-4 w-4 text-emerald-300"></i>
+                      </div>
+                      <p class="mt-2 text-2xl font-semibold tracking-tight">781</p>
+                      <p class="text-xs text-slate-400 mt-1">Excellent</p>
+                    </div>
+                    <div class="rounded-lg bg-white/[0.03] ring-1 ring-white/10 p-4">
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs text-slate-300">Cashback</span>
+                        <i data-lucide="gift" class="h-4 w-4 text-yellow-300"></i>
+                      </div>
+                      <p class="mt-2 text-2xl font-semibold tracking-tight">$126</p>
+                      <p class="text-xs text-slate-400 mt-1">This month</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- More floating icon -->
+              <div class="absolute -right-3 -top-3 h-10 w-10 rounded-full bg-white/5 ring-1 ring-white/10 flex items-center justify-center animate-pulse">
+                <i data-lucide="sparkles" class="h-4 w-4 text-cyan-200"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Smart Suggestion Tiles -->
+      
+
+      <!-- Sections -->
+      <main class="space-y-14">
+        <!-- Learn -->
+      
+        <!-- Stocks Advisor -->
+        <section id="stocks" class="scroll-mt-20">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-2xl font-semibold tracking-tight">Stocks Advisor</h2>
+              <a href="#" class="text-sm text-cyan-300 hover:text-cyan-200 inline-flex items-center gap-1">Open dashboard <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <!-- Trending Stocks -->
+              <div class="rounded-xl bg-white/[0.03] ring-1 ring-white/10 p-5">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-base font-medium tracking-tight">Trending</h3>
+                  <i data-lucide="flame" class="h-5 w-5 text-rose-300"></i>
+                </div>
+                <ul class="mt-3 divide-y divide-white/5">
+                  <li class="py-3 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="h-8 w-8 rounded-md bg-white/5 ring-1 ring-white/10 flex items-center justify-center">
+                        <span class="text-xs font-semibold tracking-tight">ITC</span>
+                      </div>
+                      <div>
+                        <p class="text-sm">ITC Ltd</p>
+                        <p class="text-xs text-slate-400">FMCG</p>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-sm font-medium tracking-tight">₹475.80</p>
+                      <p class="text-xs text-emerald-300">+1.9%</p>
+                    </div>
+                  </li>
+                  <li class="py-3 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="h-8 w-8 rounded-md bg-white/5 ring-1 ring-white/10 flex items-center justify-center">
+                        <span class="text-xs font-semibold tracking-tight">TCS</span>
+                      </div>
+                      <div>
+                        <p class="text-sm">Tata Consultancy</p>
+                        <p class="text-xs text-slate-400">IT Services</p>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-sm font-medium tracking-tight">₹3,820.10</p>
+                      <p class="text-xs text-emerald-300">+0.7%</p>
+                    </div>
+                  </li>
+                  <li class="py-3 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="h-8 w-8 rounded-md bg-white/5 ring-1 ring-white/10 flex items-center justify-center">
+                        <span class="text-xs font-semibold tracking-tight">INFY</span>
+                      </div>
+                      <div>
+                        <p class="text-sm">Infosys</p>
+                        <p class="text-xs text-slate-400">IT Services</p>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-sm font-medium tracking-tight">₹1,615.35</p>
+                      <p class="text-xs text-rose-300">-0.4%</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Mini Portfolio Simulation -->
+              <div class="rounded-xl bg-white/[0.03] ring-1 ring-white/10 p-5">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-base font-medium tracking-tight">Portfolio Simulation</h3>
+                  <i data-lucide="gauge" class="h-5 w-5 text-cyan-300"></i>
+                </div>
+                <p class="mt-1 text-sm text-slate-400">Balanced (60/30/10)</p>
+                <div class="mt-3">
+                  <div class="relative w-full h-28">
+                    <canvas id="portfolioChart" class="absolute inset-0"></canvas>
+                  </div>
+                </div>
+                <div class="mt-4 grid grid-cols-3 gap-3 text-xs">
+                  <div class="rounded-lg bg-white/[0.03] ring-1 ring-white/10 p-3">
+                    <p class="text-slate-400">1D</p>
+                    <p class="font-medium tracking-tight text-emerald-300">+0.6%</p>
+                  </div>
+                  <div class="rounded-lg bg-white/[0.03] ring-1 ring-white/10 p-3">
+                    <p class="text-slate-400">1M</p>
+                    <p class="font-medium tracking-tight text-emerald-300">+4.4%</p>
+                  </div>
+                  <div class="rounded-lg bg-white/[0.03] ring-1 ring-white/10 p-3">
+                    <p class="text-slate-400">1Y</p>
+                    <p class="font-medium tracking-tight text-emerald-300">+12.1%</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Signals -->
+              <div class="rounded-xl bg-white/[0.03] ring-1 ring-white/10 p-5">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-base font-medium tracking-tight">Signals</h3>
+                  <i data-lucide="radar" class="h-5 w-5 text-emerald-300"></i>
+                </div>
+                <div class="mt-3 space-y-3">
+                  <div class="flex items-center justify-between rounded-lg bg-white/[0.03] ring-1 ring-white/10 p-3">
+                    <div class="flex items-center gap-2">
+                      <i data-lucide="bell" class="h-4 w-4 text-yellow-300"></i>
+                      <div>
+                        <p class="text-sm">Breakout Watch</p>
+                        <p class="text-xs text-slate-400">TCS near 52W high</p>
+                      </div>
+                    </div>
+                    <span class="text-xs text-cyan-300">View</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-lg bg-white/[0.03] ring-1 ring-white/10 p-3">
+                    <div class="flex items-center gap-2">
+                      <i data-lucide="bell" class="h-4 w-4 text-yellow-300"></i>
+                      <div>
+                        <p class="text-sm">Momentum</p>
+                        <p class="text-xs text-slate-400">ITC + RSI ↑</p>
+                      </div>
+                    </div>
+                    <span class="text-xs text-cyan-300">Open</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-lg bg-white/[0.03] ring-1 ring-white/10 p-3">
+                    <div class="flex items-center gap-2">
+                      <i data-lucide="bell" class="h-4 w-4 text-yellow-300"></i>
+                      <div>
+                        <p class="text-sm">Reversal</p>
+                        <p class="text-xs text-slate-400">INFY MACD crossover</p>
+                      </div>
+                    </div>
+                    <span class="text-xs text-cyan-300">Details</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="mt-16 border-t border-white/10">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div class="flex items-center gap-2">
+                <div class="flex h-8 w-8 items-center justify-center rounded-md bg-white/5 ring-1 ring-white/10">
+                  <span class="text-sm font-semibold tracking-tight">F</span>
+                </div>
+                <span class="text-base font-semibold tracking-tight">Fintera</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-400">Guiding you through personal finance, tools, and investing.</p>
+              <div class="mt-4 flex items-center gap-2">
+                <a href="#" class="h-9 w-9 rounded-md bg-white/5 ring-1 ring-white/10 hover:bg-white/10 flex items-center justify-center">
+                  <i data-lucide="twitter" class="h-4 w-4"></i>
+                </a>
+                <a href="#" class="h-9 w-9 rounded-md bg-white/5 ring-1 ring-white/10 hover:bg-white/10 flex items-center justify-center">
+                  <i data-lucide="linkedin" class="h-4 w-4"></i>
+                </a>
+                <a href="#" class="h-9 w-9 rounded-md bg-white/5 ring-1 ring-white/10 hover:bg-white/10 flex items-center justify-center">
+                  <i data-lucide="youtube" class="h-4 w-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-medium tracking-tight">Company</h4>
+              <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                <li><a href="#" class="hover:text-white">About</a></li>
+                <li><a href="#" class="hover:text-white">Privacy</a></li>
+                <li><a href="#" class="hover:text-white">FAQ</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-medium tracking-tight">Products</h4>
+              <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                <li><a href="#tools" class="hover:text-white">Tools</a></li>
+                <li><a href="#learn" class="hover:text-white">Learning</a></li>
+                <li><a href="#stocks" class="hover:text-white">Stocks Advisor</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-medium tracking-tight">Newsletter</h4>
+              <p class="mt-3 text-sm text-slate-400">Get updates on tools, lessons, and market insights.</p>
+              <form class="mt-3 flex gap-2">
+                <input type="email" placeholder="Email address" class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white placeholder:text-slate-500 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-400" />
+                <button type="submit" class="rounded-md bg-cyan-500/90 px-3 py-2 text-sm font-medium text-slate-900 hover:bg-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">Join</button>
+              </form>
+            </div>
+          </div>
+          <div class="mt-8 pt-6 border-t border-white/10 text-xs text-slate-500">
+            © <span id="yearNow"></span> Fintera. All rights reserved.
+          </div>
+        </div>
+      </footer>
+
+      <!-- Floating Chatbot Button -->
+      <button id="chatBtn" class="fixed bottom-5 right-5 inline-flex items-center gap-2 rounded-full bg-cyan-500/90 px-4 py-3 text-sm font-medium text-slate-900 shadow-lg hover:bg-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
+        <i data-lucide="message-circle" class="h-5 w-5"></i>
+        <span>Chat</span>
+      </button>
+
+      <!-- Chat Panel -->
+      <div id="chatPanel" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="absolute right-0 top-0 h-full w-full sm:w-[380px] bg-slate-950 ring-1 ring-white/10 flex flex-col">
+          <div class="flex items-center justify-between p-4 border-b border-white/10">
+            <div class="flex items-center gap-2">
+              <div class="h-8 w-8 rounded-md bg-white/5 ring-1 ring-white/10 flex items-center justify-center">
+                <i data-lucide="bot" class="h-4 w-4 text-cyan-300"></i>
+              </div>
+              <div>
+                <p class="text-sm font-medium tracking-tight">Fintera Assistant</p>
+                <p class="text-xs text-slate-400">Ask anything about money</p>
+              </div>
+            </div>
+            <button id="chatClose" class="h-9 w-9 rounded-md bg-white/5 ring-1 ring-white/10 hover:bg-white/10 flex items-center justify-center">
+              <i data-lucide="x" class="h-4 w-4"></i>
+            </button>
+          </div>
+          <div class="flex-1 overflow-y-auto p-4 space-y-3">
+            <div class="text-xs text-slate-400 text-center">This is a preview. Connect your backend assistant here.</div>
+          </div>
+          <div class="p-3 border-t border-white/10">
+            <form id="chatForm" class="flex items-center gap-2">
+              <input id="chatInput" type="text" placeholder="Type your message..." class="flex-1 rounded-md bg-white/5 px-3 py-2 text-sm text-white placeholder:text-slate-500 ring-1 ring-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-400" />
+              <button class="h-10 w-10 rounded-md bg-cyan-500/90 text-slate-900 hover:bg-cyan-400 flex items-center justify-center">
+                <i data-lucide="send" class="h-4 w-4"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Modal -->
+      <div id="searchModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="absolute inset-0 flex items-start justify-center pt-24 px-4">
+          <div class="w-full max-w-2xl rounded-xl bg-slate-950 ring-1 ring-white/10">
+            <div class="flex items-center gap-2 p-3">
+              <i data-lucide="search" class="h-4 w-4 text-slate-400"></i>
+              <input type="text" placeholder="Search tools, lessons, stocks..." class="w-full bg-transparent outline-none text-sm placeholder:text-slate-500" />
+              <button id="searchClose" class="h-8 w-8 rounded-md bg-white/5 ring-1 ring-white/10 hover:bg-white/10 flex items-center justify-center">
+                <i data-lucide="x" class="h-4 w-4"></i>
+              </button>
+            </div>
+            <div class="border-t border-white/10 p-3 text-xs text-slate-400">Try: EMI Calculator, SIP Planner, Top SIP 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize icons
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.lucide) {
+          lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+        }
+      });
+
+      // Year
+      document.getElementById('yearNow').textContent = new Date().getFullYear();
+
+      // Mobile Menu
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // Language Toggle
+      const langButtons = document.querySelectorAll('button[data-lang]');
+      const LANG_KEY = 'fintera_lang';
+      function setLangUI(lang) {
+        langButtons.forEach(btn => {
+          const active = btn.dataset.lang === lang;
+          btn.classList.toggle('text-white/80', active);
+          btn.classList.toggle('text-white/60', !active);
+          btn.classList.toggle('bg-white/10', active);
+        });
+      }
+      const savedLang = localStorage.getItem(LANG_KEY) || 'EN';
+      setLangUI(savedLang);
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          localStorage.setItem(LANG_KEY, btn.dataset.lang);
+          setLangUI(btn.dataset.lang);
+        });
+      });
+
+      // Search Modal
+      const searchBtn = document.getElementById('searchBtn');
+      const searchModal = document.getElementById('searchModal');
+      const searchClose = document.getElementById('searchClose');
+      if (searchBtn) searchBtn.addEventListener('click', () => { searchModal.classList.remove('hidden'); });
+      if (searchClose) searchClose.addEventListener('click', () => { searchModal.classList.add('hidden'); });
+      searchModal && searchModal.addEventListener('click', (e) => { if (e.target === searchModal.firstElementChild) searchModal.classList.add('hidden'); });
+
+      // Chat Panel
+      const chatBtn = document.getElementById('chatBtn');
+      const chatPanel = document.getElementById('chatPanel');
+      const chatClose = document.getElementById('chatClose');
+      chatBtn.addEventListener('click', () => {
+        chatPanel.classList.remove('hidden');
+      });
+      chatClose.addEventListener('click', () => {
+        chatPanel.classList.add('hidden');
+      });
+      chatPanel.addEventListener('click', (e) => {
+        // close when clicking outside panel (on overlay)
+        if (e.target === chatPanel.firstElementChild) chatPanel.classList.add('hidden');
+      });
+      document.getElementById('chatForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = document.getElementById('chatInput');
+        if (!input.value.trim()) return;
+        input.value = '';
+      });
+
+      // Suggestions carousel controls
+      const suggCarousel = document.getElementById('suggCarousel');
+      const suggPrev = document.getElementById('suggPrev');
+      const suggNext = document.getElementById('suggNext');
+      function scrollByCards(dir = 1) {
+        const card = suggCarousel.querySelector('button');
+        const delta = card ? card.offsetWidth + 16 : 260;
+        suggCarousel.scrollBy({ left: dir * delta, behavior: 'smooth' });
+      }
+      suggPrev && suggPrev.addEventListener('click', () => scrollByCards(-1));
+      suggNext && suggNext.addEventListener('click', () => scrollByCards(1));
+
+      // Suggestions personalization (local, session-based)
+      const SUGG_KEY = 'fintera_suggestions_recent';
+      function getRecent() {
+        try { return JSON.parse(localStorage.getItem(SUGG_KEY) || '[]'); } catch { return []; }
+      }
+      function setRecent(list) {
+        localStorage.setItem(SUGG_KEY, JSON.stringify(list.slice(0, 6)));
+      }
+      function reorderSuggestions() {
+        const recent = getRecent();
+        if (!recent.length) return;
+        const nodes = Array.from(suggCarousel.children);
+        nodes.sort((a, b) => {
+          const ra = recent.indexOf(a.dataset.suggest);
+          const rb = recent.indexOf(b.dataset.suggest);
+          const ai = ra >= 0 ? ra : 999;
+          const bi = rb >= 0 ? rb : 999;
+          return ai - bi;
+        }).forEach(n => suggCarousel.appendChild(n));
+      }
+      reorderSuggestions();
+      suggCarousel.querySelectorAll('button[data-suggest]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.dataset.suggest;
+          const rec = getRecent().filter(x => x !== key);
+          rec.unshift(key);
+          setRecent(rec);
+          reorderSuggestions();
+        });
+      });
+
+      // Charts
+      function makeLineChart(ctx, color, data) {
+        return new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: data.map((_, i) => i),
+            datasets: [{
+              data,
+              borderColor: color,
+              borderWidth: 2,
+              pointRadius: 0,
+              tension: 0.35,
+              fill: true,
+              backgroundColor: Chart.helpers.color(color).alpha(0.15)
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { enabled: false } },
+            scales: {
+              x: { display: false, grid: { display: false } },
+              y: { display: false, grid: { display: false } }
+            }
+          }
+        });
+      }
+      const heroCtx = document.getElementById('heroChart').getContext('2d');
+      makeLineChart(heroCtx, '#34d399', [10,12,13,15,16,18,22,21,25,28,30,35]);
+
+      const portCtx = document.getElementById('portfolioChart').getContext('2d');
+      makeLineChart(portCtx, '#22d3ee', [40,41,40,42,44,46,48,49,51,54,55,57]);
+
+    </script>
+  </body>
+</html>

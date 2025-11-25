@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Stock Guide — Beginner-Friendly Market Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+  <body class="bg-[#0b0f17] text-zinc-100 antialiased min-h-screen selection:bg-blue-500/30" style="font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';">
+    <!-- App Container -->
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="hidden lg:flex w-64 flex-col border-r border-white/10 bg-black/20 backdrop-blur-xl">
+        <div class="flex items-center gap-2 h-16 px-5">
+          <div class="flex items-center justify-center h-9 w-9 rounded-md bg-gradient-to-r from-[#00ff94] to-[#00d4aa] ring-1 ring-white/10">
+            <span class="tracking-tight font-semibold text-black text-lg font-bold">F</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-zinc-100 font-medium tracking-tight" style="font-family: 'Space Grotesk', sans-serif; background: linear-gradient(135deg, #00ff94, #00d4aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Fintera</span>
+            <span class="text-xs text-zinc-400">Stock Advisor</span>
+          </div>
+        </div>
+        <nav class="mt-2 px-3 space-y-1">
+          <a href="v2.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm hover:bg-white/5 hover:ring-1 hover:ring-white/10 transition">
+            <i data-lucide="home" class="h-4 w-4 text-zinc-300"></i>
+            <span class="text-zinc-200">Home</span>
+          </a>
+          <a href="learn.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm hover:bg-white/5 hover:ring-1 hover:ring-white/10 transition">
+            <i data-lucide="book-open" class="h-4 w-4 text-zinc-300"></i>
+            <span class="text-zinc-200">Finance Guide</span>
+          </a>
+          <a href="index.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm hover:bg-white/5 hover:ring-1 hover:ring-white/10 transition">
+            <i data-lucide="calculator" class="h-4 w-4 text-zinc-300"></i>
+            <span class="text-zinc-200">Tools</span>
+          </a>
+          <button data-nav="dashboard" class="nav-btn w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm hover:bg-white/5 hover:ring-1 hover:ring-white/10 active:bg-white/10 transition">
+            <i data-lucide="layout-dashboard" class="h-4 w-4 text-zinc-300"></i>
+            <span class="text-zinc-200">Dashboard</span>
+          </button>
+          <button data-nav="search" class="nav-btn w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm hover:bg-white/5 hover:ring-1 hover:ring-white/10 active:bg-white/10 transition">
+            <i data-lucide="search" class="h-4 w-4 text-zinc-300"></i>
+            <span class="text-zinc-200">Search & Profiles</span>
+          </button>
+          <button data-nav="education" class="nav-btn w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm hover:bg-white/5 hover:ring-1 hover:ring-white/10 active:bg-white/10 transition">
+            <i data-lucide="book-open" class="h-4 w-4 text-zinc-300"></i>
+            <span class="text-zinc-200">Education</span>
+          </button>
+          <button data-nav="portfolio" class="nav-btn w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm hover:bg-white/5 hover:ring-1 hover:ring-white/10 active:bg-white/10 transition">
+            <i data-lucide="wallet" class="h-4 w-4 text-zinc-300"></i>
+            <span class="text-zinc-200">Portfolio</span>
+          </button>
+        </nav>
+        <div class="mt-auto p-4 space-y-2">
+          <div class="rounded-lg border border-white/10 p-3 bg-white/5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-zinc-400">Virtual Cash</span>
+              <i data-lucide="coins" class="h-4 w-4 text-emerald-400"></i>
+            </div>
+            <div id="sidebar-cash" class="mt-1 text-lg font-semibold tracking-tight">$100,000.00</div>
+            <button id="add-funds" class="mt-2 w-full text-xs px-2.5 py-1.5 rounded-md bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 hover:ring-1 hover:ring-emerald-400/40 transition">
+              Add $10,000
+            </button>
+          </div>
+          <div class="rounded-lg border border-white/10 p-3">
+            <p class="text-xs text-zinc-400">Disclaimer: For education only. Data simulated.</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="flex-1 flex flex-col">
+        <!-- Top Bar -->
+        <header class="h-16 flex items-center gap-3 px-4 md:px-6 border-b border-white/10 bg-black/20 backdrop-blur-xl">
+          <button class="lg:hidden inline-flex items-center justify-center h-9 w-9 rounded-md hover:bg-white/10 hover:ring-1 hover:ring-white/10" id="mobile-menu">
+            <i data-lucide="menu" class="h-5 w-5 text-zinc-300"></i>
+          </button>
+          <div class="relative flex-1 max-w-2xl">
+            <i data-lucide="search" class="absolute left-3 top-2.5 h-4 w-4 text-zinc-400"></i>
+            <input id="global-search" type="text" placeholder="Search stocks by ticker or company…" class="w-full bg-white/5 border border-white/10 rounded-md pl-10 pr-10 h-10 text-sm outline-none focus:ring-2 focus:ring-blue-500/40 placeholder:text-zinc-500" />
+            <div id="search-results" class="hidden absolute mt-2 w-full rounded-md border border-white/10 bg-[#121622] shadow-xl overflow-hidden z-30"></div>
+          </div>
+          <div class="ml-auto flex items-center gap-2">
+            <button id="open-education" class="hidden md:inline-flex items-center gap-2 px-3 h-9 rounded-md text-sm bg-white/5 hover:bg-white/10 hover:ring-1 hover:ring-white/10 transition">
+              <i data-lucide="graduation-cap" class="h-4 w-4"></i>
+              Learn
+            </button>
+            <button class="inline-flex items-center justify-center h-9 w-9 rounded-md hover:bg-white/10 hover:ring-1 hover:ring-white/10">
+              <i data-lucide="bell" class="h-5 w-5 text-zinc-300"></i>
+            </button>
+            <div class="hidden md:flex items-center gap-2 px-3 h-9 rounded-md border border-white/10">
+              <i data-lucide="user" class="h-4 w-4 text-zinc-300"></i>
+              <span class="text-sm text-zinc-300">Guest</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="flex-1 grid grid-cols-1 xl:grid-cols-3 gap-4 md:gap-6 p-4 md:p-6">
+          <!-- Left/Main Column -->
+          <section class="xl:col-span-2 space-y-4 md:space-y-6">
+            <!-- Company Header -->
+            <div class="rounded-xl border border-white/10 bg-white/[0.03]">
+              <div class="p-4 md:p-5 flex flex-col gap-3 md:gap-4">
+                <div class="flex items-start justify-between">
+                  <div class="flex items-center gap-3">
+                    <div id="company-logo" class="h-10 w-10 md:h-12 md:w-12 rounded-md bg-white/10 ring-1 ring-white/10 flex items-center justify-center text-lg md:text-xl font-semibold tracking-tight">A</div>
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <h1 id="company-name" class="text-xl md:text-2xl font-semibold tracking-tight">Apple Inc.</h1>
+                        <span id="company-ticker" class="px-2 py-0.5 rounded-md text-xs bg-white/5 border border-white/10 text-zinc-300">AAPL</span>
+                        <span id="company-sector" class="hidden sm:inline px-2 py-0.5 rounded-md text-xs bg-blue-500/10 border border-blue-400/20 text-blue-300">Technology</span>
+                      </div>
+                      <div class="mt-1 text-sm text-zinc-400 line-clamp-1" id="company-desc">Designs, manufactures, and markets smartphones, personal computers, tablets, wearables and accessories worldwide.</div>
+                    </div>
+                  </div>
+                  <div class="hidden sm:flex items-end flex-col">
+                    <div class="flex items-center gap-2">
+                      <div id="live-price" class="text-2xl md:text-3xl font-semibold tracking-tight">$000.00</div>
+                    </div>
+                    <div class="flex items-center gap-2 mt-1">
+                      <span id="live-change" class="text-sm rounded-md px-2 py-0.5 border"></span>
+                      <button id="watch-btn" class="inline-flex items-center gap-1.5 text-xs px-2.5 py-1.5 rounded-md bg-white/5 hover:bg-white/10 hover:ring-1 hover:ring-white/10 transition">
+                        <i data-lucide="star" class="h-4 w-4"></i>
+                        Watch
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="sm:hidden">
+                  <div class="flex items-center gap-2">
+                    <div id="live-price-sm" class="text-xl font-semibold tracking-tight">$000.00</div>
+                    <span id="live-change-sm" class="text-xs rounded-md px-2 py-0.5 border"></span>
+                    <button id="watch-btn-sm" class="ml-auto inline-flex items-center gap-1.5 text-xs px-2.5 py-1.5 rounded-md bg-white/5 hover:bg-white/10 hover:ring-1 hover:ring-white/10 transition">
+                      <i data-lucide="star" class="h-4 w-4"></i>
+                      Watch
+                    </button>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 pt-2 border-t border-white/10">
+                  <div class="flex flex-col">
+                    <span class="text-xs text-zinc-400">Market Cap</span>
+                    <span id="stat-mcap" class="text-sm md:text-base">—</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-xs text-zinc-400">P/E</span>
+                    <span id="stat-pe" class="text-sm md:text-base">—</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-xs text-zinc-400">EPS</span>
+                    <span id="stat-eps" class="text-sm md:text-base">—</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-xs text-zinc-400">Revenue (TTM)</span>
+                    <span id="stat-rev" class="text-sm md:text-base">—</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chart & Tools -->
+            <div class="rounded-xl border border-white/10 overflow-hidden">
+              <div class="p-3 md:p-4 flex flex-wrap items-center gap-2 md:gap-3 border-b border-white/10 bg-white/[0.02]">
+                <!-- Timeframes -->
+                <div class="flex items-center rounded-md bg-white/5 border border-white/10 overflow-hidden">
+                  <button data-timeframe="1D" class="time-btn px-3 py-1.5 text-sm hover:bg-white/10">1D</button>
+                  <button data-timeframe="1W" class="time-btn px-3 py-1.5 text-sm hover:bg-white/10">1W</button>
+                  <button data-timeframe="1M" class="time-btn px-3 py-1.5 text-sm hover:bg-white/10">1M</button>
+                  <button data-timeframe="1Y" class="time-btn px-3 py-1.5 text-sm hover:bg-white/10">1Y</button>
+                  <button data-timeframe="MAX" class="time-btn px-3 py-1.5 text-sm hover:bg-white/10">MAX</button>
+                </div>
+                <!-- Indicators -->
+                <div class="flex items-center gap-2 ml-1">
+                  <button data-indicator="MA" class="ind-btn inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md bg-white/5 border border-white/10 hover:bg-white/10">
+                    <i data-lucide="line-chart" class="h-4 w-4"></i> MA
+                  </button>
+                  <button data-indicator="RSI" class="ind-btn inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md bg-white/5 border border-white/10 hover:bg-white/10">
+                    <i data-lucide="activity" class="h-4 w-4"></i> RSI
+                  </button>
+                  <button data-indicator="MACD" class="ind-btn inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md bg-white/5 border border-white/10 hover:bg-white/10">
+                    <i data-lucide="waveform" class="h-4 w-4"></i> MACD
+                  </button>
+                </div>
+                <!-- Drawing Tools -->
+                <div class="ml-auto flex items-center gap-2">
+                  <div class="text-xs text-zinc-400 hidden md:inline">Draw:</div>
+                  <button data-draw="trendline" class="draw-btn inline-flex items-center gap-1.5 px-2.5 py-1.5 text-sm rounded-md bg-white/5 border border-white/10 hover:bg-white/10">
+                    <i data-lucide="slash" class="h-4 w-4"></i> TL
+                  </button>
+                  <button data-draw="hline" class="draw-btn inline-flex items-center gap-1.5 px-2.5 py-1.5 text-sm rounded-md bg-white/5 border border-white/10 hover:bg-white/10">
+                    <i data-lucide="minus" class="h-4 w-4"></i> HL
+                  </button>
+                  <button id="clear-draw" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-sm rounded-md bg-white/5 border border-white/10 hover:bg-white/10">
+                    <i data-lucide="eraser" class="h-4 w-4"></i> Clear
+                  </button>
+                </div>
+              </div>
+
+              <!-- Chart Area -->
+              <div class="relative">
+                <div class="px-3 md:px-4 pt-4">
+                  <div class="rounded-lg border border-white/10 bg-black/20 overflow-hidden">
+                    <div class="p-2">
+                      <div>
+                        <div class="relative">
+                          <div>
+                            <canvas id="price-canvas" class="block w-full"></canvas>
+                          </div>
+                          <canvas id="draw-overlay" class="absolute inset-0 pointer-events-auto"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- RSI -->
+                <div id="rsi-container" class="hidden px-3 md:px-4 mt-3">
+                  <div class="rounded-lg border border-white/10 bg-black/20 overflow-hidden">
+                    <div class="p-2">
+                      <div>
+                        <div>
+                          <canvas id="rsi-canvas" class="block w-full"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- MACD -->
+                <div id="macd-container" class="hidden px-3 md:px-4 mt-3 mb-4">
+                  <div class="rounded-lg border border-white/10 bg-black/20 overflow-hidden">
+                    <div class="p-2">
+                      <div>
+                        <div>
+                          <canvas id="macd-canvas" class="block w-full"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Trade Panel -->
+                <div class="px-3 md:px-4 pb-4">
+                  <div class="rounded-lg border border-white/10 bg-white/[0.02] p-3 md:p-4">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <h3 class="text-base md:text-lg font-semibold tracking-tight">Demo Trade</h3>
+                        <span class="text-xs text-zinc-400">(Paper)</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <button data-side="BUY" class="side-btn px-3 py-1.5 rounded-md text-sm bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 hover:ring-1 hover:ring-emerald-400/40">Buy</button>
+                        <button data-side="SELL" class="side-btn px-3 py-1.5 rounded-md text-sm bg-rose-500/10 text-rose-300 hover:bg-rose-500/20 hover:ring-1 hover:ring-rose-400/40">Sell</button>
+                      </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 mt-3">
+                      <div class="col-span-2">
+                        <label class="text-xs text-zinc-400">Quantity</label>
+                        <input id="trade-qty" type="number" min="1" step="1" value="10" class="mt-1 w-full h-10 rounded-md bg-white/5 border border-white/10 px-3 text-sm outline-none focus:ring-2 focus:ring-blue-500/40" />
+                      </div>
+                      <div>
+                        <label class="text-xs text-zinc-400">Est. Price</label>
+                        <div id="trade-price" class="mt-1 h-10 rounded-md bg-white/5 border border-white/10 px-3 flex items-center text-sm">$0.00</div>
+                      </div>
+                      <div>
+                        <label class="text-xs text-zinc-400">Est. Cost</label>
+                        <div id="trade-cost" class="mt-1 h-10 rounded-md bg-white/5 border border-white/10 px-3 flex items-center text-sm">$0.00</div>
+                      </div>
+                    </div>
+                    <div class="mt-3 flex items-center justify-between">
+                      <div class="text-xs text-zinc-400">Cash: <span id="trade-cash" class="text-zinc-200">$0.00</span></div>
+                      <button id="place-order" class="px-4 py-2 rounded-md bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 hover:ring-1 hover:ring-blue-400/40 text-sm">Place Order</button>
+                    </div>
+                    <div class="mt-4 rounded-md border border-white/10">
+                      <div class="px-3 py-2 flex items-center justify-between bg-white/5">
+                        <span class="text-sm">Position</span>
+                        <span id="pos-ticker" class="text-sm text-zinc-400"></span>
+                      </div>
+                      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 p-3 text-sm">
+                        <div>
+                          <div class="text-xs text-zinc-400">Quantity</div>
+                          <div id="pos-qty">0</div>
+                        </div>
+                        <div>
+                          <div class="text-xs text-zinc-400">Avg Cost</div>
+                          <div id="pos-avg">$0.00</div>
+                        </div>
+                        <div>
+                          <div class="text-xs text-zinc-400">Last</div>
+                          <div id="pos-last">$0.00</div>
+                        </div>
+                        <div>
+                          <div class="text-xs text-zinc-400">Unrealized P/L</div>
+                          <div id="pos-pl" class="">$0.00</div>
+                        </div>
+                        <div>
+                          <div class="text-xs text-zinc-400">Value</div>
+                          <div id="pos-val">$0.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- News & Financials -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+              <div class="rounded-xl border border-white/10 overflow-hidden">
+                <div class="p-4 border-b border-white/10 bg-white/[0.02]">
+                  <h3 class="text-lg font-semibold tracking-tight">Latest News</h3>
+                </div>
+                <div id="news-list" class="p-3 divide-y divide-white/10"></div>
+              </div>
+              <div class="rounded-xl border border-white/10 overflow-hidden">
+                <div class="p-4 border-b border-white/10 bg-white/[0.02]">
+                  <h3 class="text-lg font-semibold tracking-tight">Key Financials</h3>
+                </div>
+                <div class="p-3 grid grid-cols-2 gap-3">
+                  <div class="rounded-md border border-white/10 p-3 bg-white/5">
+                    <div class="text-xs text-zinc-400">Revenue (TTM)</div>
+                    <div id="fin-rev" class="text-sm mt-1">$—</div>
+                  </div>
+                  <div class="rounded-md border border-white/10 p-3 bg-white/5">
+                    <div class="text-xs text-zinc-400">Gross Margin</div>
+                    <div id="fin-gm" class="text-sm mt-1">—</div>
+                  </div>
+                  <div class="rounded-md border border-white/10 p-3 bg-white/5">
+                    <div class="text-xs text-zinc-400">Operating Margin</div>
+                    <div id="fin-om" class="text-sm mt-1">—</div>
+                  </div>
+                  <div class="rounded-md border border-white/10 p-3 bg-white/5">
+                    <div class="text-xs text-zinc-400">Net Margin</div>
+                    <div id="fin-nm" class="text-sm mt-1">—</div>
+                  </div>
+                  <div class="rounded-md border border-white/10 p-3 bg-white/5">
+                    <div class="text-xs text-zinc-400">Debt/Equity</div>
+                    <div id="fin-de" class="text-sm mt-1">—</div>
+                  </div>
+                  <div class="rounded-md border border-white/10 p-3 bg-white/5">
+                    <div class="text-xs text-zinc-400">Dividend Yield</div>
+                    <div id="fin-dy" class="text-sm mt-1">—</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Right Column -->
+          <aside class="space-y-4 md:space-y-6">
+            <!-- Trending -->
+            <div class="rounded-xl border border-white/10 overflow-hidden">
+              <div class="p-4 border-b border-white/10 bg-white/[0.02] flex items-center justify-between">
+                <h3 class="text-lg font-semibold tracking-tight">Trending Today</h3>
+                <button id="refresh-trending" class="text-xs px-2 py-1 rounded-md bg-white/5 hover:bg-white/10 hover:ring-1 hover:ring-white/10">Refresh</button>
+              </div>
+              <div id="trending-list" class="p-3 space-y-2"></div>
+            </div>
+
+            <!-- Discovery -->
+            <div class="rounded-xl border border-white/10 overflow-hidden">
+              <div class="p-4 border-b border-white/10 bg-white/[0.02]">
+                <h3 class="text-lg font-semibold tracking-tight">Discovery</h3>
+              </div>
+              <div class="p-3 space-y-3">
+                <div class="flex flex-wrap gap-2">
+                  <button data-discovery="tech" class="disc-btn px-3 py-1.5 text-sm rounded-md bg-white/5 border border-white/10 hover:bg-white/10">Tech Innovators</button>
+                  <button data-discovery="green" class="disc-btn px-3 py-1.5 text-sm rounded-md bg-white/5 border border-white/10 hover:bg-white/10">Green Energy Leaders</button>
+                  <button data-discovery="ai" class="disc-btn px-3 py-1.5 text-sm rounded-md bg-white/5 border border-white/10 hover:bg-white/10">AI & Cloud</button>
+                </div>
+                <div id="discovery-list" class="space-y-2"></div>
+              </div>
+            </div>
+
+            <!-- Education -->
+            <div class="rounded-xl border border-white/10 overflow-hidden">
+              <div class="p-4 border-b border-white/10 bg-white/[0.02]">
+                <h3 class="text-lg font-semibold tracking-tight">Learn & Practice</h3>
+              </div>
+              <div class="p-3 grid grid-cols-1 gap-3">
+                <div class="rounded-lg border border-white/10 p-3 bg-gradient-to-br from-white/5 to-white/[0.02]">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <i data-lucide="lightbulb" class="h-4 w-4 text-amber-300"></i>
+                      <div class="text-sm font-medium">What is a stock?</div>
+                    </div>
+                    <button class="edu-open text-xs px-2 py-1 rounded-md bg-white/5 hover:bg-white/10" data-article="stock">Open</button>
+                  </div>
+                </div>
+                <div class="rounded-lg border border-white/10 p-3 bg-gradient-to-br from-white/5 to-white/[0.02]">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <i data-lucide="chart-line" class="h-4 w-4 text-sky-300"></i>
+                      <div class="text-sm font-medium">How to read charts</div>
+                    </div>
+                    <button class="edu-open text-xs px-2 py-1 rounded-md bg-white/5 hover:bg-white/10" data-article="charts">Open</button>
+                  </div>
+                </div>
+                <div class="rounded-lg border border-white/10 p-3 bg-gradient-to-br from-white/5 to-white/[0.02]">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <i data-lucide="book" class="h-4 w-4 text-emerald-300"></i>
+                      <div class="text-sm font-medium">Glossary</div>
+                    </div>
+                    <button class="edu-open text-xs px-2 py-1 rounded-md bg-white/5 hover:bg-white/10" data-article="glossary">Open</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Portfolio Page (Drawer-style) -->
+        <div id="portfolio-drawer" class="hidden fixed inset-0 bg-black/60 z-40">
+          <div class="absolute right-0 top-0 bottom-0 w-full md:w-[560px] bg-[#0b0f17] border-l border-white/10 flex flex-col">
+            <div class="h-14 px-4 border-b border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i data-lucide="wallet" class="h-5 w-5"></i>
+                <h3 class="text-lg font-semibold tracking-tight">Your Portfolio</h3>
+              </div>
+              <button id="close-portfolio" class="h-9 w-9 inline-flex items-center justify-center rounded-md hover:bg-white/10 hover:ring-1 hover:ring-white/10">
+                <i data-lucide="x" class="h-5 w-5"></i>
+              </button>
+            </div>
+            <div class="p-4 space-y-4 overflow-y-auto">
+              <div class="rounded-lg border border-white/10 p-3 bg-white/5">
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <div class="text-xs text-zinc-400">Cash</div>
+                    <div id="port-cash" class="text-lg font-semibold tracking-tight">$0.00</div>
+                  </div>
+                  <div>
+                    <div class="text-xs text-zinc-400">Portfolio Value</div>
+                    <div id="port-value" class="text-lg font-semibold tracking-tight">$0.00</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-lg border border-white/10 overflow-hidden">
+                <div class="px-3 py-2 bg-white/5 flex items-center justify-between">
+                  <div class="text-sm">Positions</div>
+                  <div id="port-updated" class="text-xs text-zinc-400"></div>
+                </div>
+                <div id="positions-table" class="divide-y divide-white/10"></div>
+              </div>
+              <div class="rounded-lg border border-white/10 overflow-hidden">
+                <div class="px-3 py-2 bg-white/5">
+                  <div class="text-sm">Trade History</div>
+                </div>
+                <div id="history-table" class="divide-y divide-white/10"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Modal -->
+        <div id="education-modal" class="hidden fixed inset-0 z-40">
+          <div class="absolute inset-0 bg-black/70"></div>
+          <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="w-full max-w-3xl rounded-xl border border-white/10 bg-[#0b0f17] overflow-hidden">
+              <div class="px-4 h-14 border-b border-white/10 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="book-open" class="h-5 w-5"></i>
+                  <h3 id="edu-title" class="text-lg font-semibold tracking-tight">Learn</h3>
+                </div>
+                <button id="close-education" class="h-9 w-9 inline-flex items-center justify-center rounded-md hover:bg-white/10 hover:ring-1 hover:ring-white/10">
+                  <i data-lucide="x" class="h-5 w-5"></i>
+                </button>
+              </div>
+              <div class="p-4 space-y-4">
+                <div id="edu-content" class="prose prose-invert max-w-none">
+                  <!-- Dynamic -->
+                </div>
+                <div id="glossary-search" class="hidden">
+                  <div class="relative">
+                    <i data-lucide="search" class="absolute left-3 top-2.5 h-4 w-4 text-zinc-400"></i>
+                    <input id="glossary-input" class="w-full bg-white/5 border border-white/10 rounded-md pl-10 pr-3 h-10 text-sm outline-none focus:ring-2 focus:ring-blue-500/40 placeholder:text-zinc-500" placeholder="Search glossary…" />
+                  </div>
+                  <div id="glossary-list" class="mt-3 divide-y divide-white/10"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <script>
+      // Icons init with 1.5 stroke
+      function refreshIcons() {
+        if (window.lucide) {
+          lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+        }
+      }
+
+      // Utilities
+      const fmt = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 });
+      const fmt0 = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+      const currency = (v) => '$' + fmt.format(v);
+      const percent = (v) => (v >= 0 ? '+' : '') + fmt.format(v) + '%';
+
+      // Simulated Data
+      const STOCKS = {
+        AAPL: {
+          ticker: 'AAPL',
+          name: 'Apple Inc.',
+          sector: 'Technology',
+          description: 'Designs and markets smartphones, personal computers, tablets, wearables, and services.',
+          financials: { mcap: 3000, pe: 28.4, eps: 6.12, rev: 390, gm: 43.1, om: 30.0, nm: 25.3, de: 1.7, dy: 0.6 },
+          category: ['tech','ai'],
+          news: [
+            { title: 'Apple rumored to unveil new AI features at upcoming event', time: '2h ago', src: 'MarketWatch' },
+            { title: 'iPhone sales resilient amid macro headwinds, analysts say', time: '6h ago', src: 'Reuters' },
+            { title: 'Services revenue hits new high', time: '1d ago', src: 'Bloomberg' },
+          ],
+        },
+        MSFT: {
+          ticker: 'MSFT', name:'Microsoft Corp.', sector:'Technology',
+          description: 'Develops, licenses, and supports software, services, devices, and solutions worldwide.',
+          financials: { mcap: 2900, pe: 34.7, eps: 9.21, rev: 245, gm: 68.5, om: 40.2, nm: 35.1, de: 0.6, dy: 0.8 },
+          category: ['tech','ai'],
+          news: [
+            { title: 'Cloud momentum accelerates with enterprise AI demand', time: '3h ago', src: 'CNBC' },
+            { title: 'Gaming division posts record engagement', time: '1d ago', src: 'The Verge' },
+          ],
+        },
+        NVDA: {
+          ticker: 'NVDA', name:'NVIDIA Corp.', sector:'Semiconductors',
+          description: 'Designs GPUs for gaming and AI, and SoCs for mobile computing and automotive.',
+          financials: { mcap: 2200, pe: 55.2, eps: 12.44, rev: 105, gm: 72.0, om: 53.0, nm: 48.0, de: 0.5, dy: 0.04 },
+          category: ['tech','ai'],
+          news: [
+            { title: 'AI chip demand continues to exceed supply', time: '1h ago', src: 'Financial Times' },
+            { title: 'New GPU architecture announced', time: '1d ago', src: 'TechCrunch' },
+          ],
+        },
+        TSLA: {
+          ticker: 'TSLA', name:'Tesla, Inc.', sector:'Automotive',
+          description: 'Designs, develops, manufactures, and sells electric vehicles and energy storage systems.',
+          financials: { mcap: 820, pe: 60.5, eps: 2.98, rev: 97, gm: 18.2, om: 11.0, nm: 9.7, de: 1.0, dy: 0.0 },
+          category: ['green','tech'],
+          news: [
+            { title: 'Production ramp meets quarterly targets', time: '4h ago', src: 'Reuters' },
+            { title: 'Energy storage unit hits record installations', time: '2d ago', src: 'Bloomberg' },
+          ],
+        },
+        AMZN: {
+          ticker: 'AMZN', name:'Amazon.com, Inc.', sector:'Consumer Discretionary',
+          description: 'Operates online retail, third-party marketplaces, and cloud services.',
+          financials: { mcap: 1800, pe: 45.3, eps: 3.64, rev: 575, gm: 46.0, om: 12.5, nm: 9.2, de: 0.9, dy: 0.0 },
+          category: ['tech','ai'],
+          news: [
+            { title: 'E-commerce margins improve amid logistics optimization', time: '8h ago', src: 'WSJ' },
+          ],
+        },
+        GOOG: {
+          ticker: 'GOOG', name:'Alphabet Inc.', sector:'Communication Services',
+          description: 'Provides online advertising, search, cloud computing, and consumer services.',
+          financials: { mcap: 2000, pe: 25.9, eps: 6.87, rev: 320, gm: 55.2, om: 29.5, nm: 24.0, de: 0.3, dy: 0.0 },
+          category: ['tech','ai'],
+          news: [
+            { title: 'Search updates bring new AI features', time: '5h ago', src: 'The Information' },
+          ],
+        },
+        META: {
+          ticker: 'META', name:'Meta Platforms, Inc.', sector:'Communication Services',
+          description: 'Builds products that enable people to connect and share via mobile devices and PCs.',
+          financials: { mcap: 1200, pe: 28.1, eps: 9.31, rev: 150, gm: 79.0, om: 39.0, nm: 33.0, de: 0.2, dy: 0.0 },
+          category: ['tech','ai'],
+          news: [
+            { title: 'AR/VR roadmap accelerates with new hardware', time: '7h ago', src: 'The Verge' },
+          ],
+        },
+        NEE: {
+          ticker: 'NEE', name:'NextEra Energy, Inc.', sector:'Utilities',
+          description: 'Largest producer of wind and solar energy in the world.',
+          financials: { mcap: 140, pe: 22.0, eps: 3.40, rev: 28, gm: 62.0, om: 30.0, nm: 25.0, de: 2.1, dy: 2.6 },
+          category: ['green'],
+          news: [
+            { title: 'Expands renewable capacity with new wind farm', time: '1d ago', src: 'Bloomberg' },
+          ],
+        },
+        ENPH: {
+          ticker: 'ENPH', name:'Enphase Energy, Inc.', sector:'Technology',
+          description: 'Designs and manufactures software-driven home energy solutions.',
+          financials: { mcap: 20, pe: 30.1, eps: 4.12, rev: 2.3, gm: 42.0, om: 20.0, nm: 18.0, de: 0.4, dy: 0.0 },
+          category: ['green','tech'],
+          news: [
+            { title: 'Microinverter demand rebounds as rates stabilize', time: '2d ago', src: 'CNBC' },
+          ],
+        },
+        PLUG: {
+          ticker: 'PLUG', name:'Plug Power Inc.', sector:'Industrials',
+          description: 'Provides hydrogen fuel cell turnkey solutions.',
+          financials: { mcap: 5, pe: -12.0, eps: -1.21, rev: 1.8, gm: 5.0, om: -25.0, nm: -30.0, de: 0.8, dy: 0.0 },
+          category: ['green'],
+          news: [
+            { title: 'Partners with logistics giant on hydrogen deployments', time: '3d ago', src: 'Reuters' },
+          ],
+        },
+      };
+
+      // Generate synthetic price series
+      function genDailySeries(days, base=100, vol=2) {
+        const out = [];
+        let price = base;
+        for (let i=days-1; i>=0; i--) {
+          const date = new Date();
+          date.setDate(date.getDate()-i);
+          const drift = (Math.random()-0.5)*vol;
+          price = Math.max(2, price + drift);
+          out.push({ t: date, c: +price.toFixed(2) });
+        }
+        return out;
+      }
+
+      function genIntradaySeries(minutes=390, lastClose=100) {
+        const out = [];
+        let price = lastClose * (0.98 + Math.random()*0.04);
+        const open = new Date(); open.setHours(9,30,0,0);
+        for (let i=0;i<minutes;i++) {
+          const t = new Date(open.getTime()+i*60000);
+          const drift = (Math.random()-0.5)*0.25;
+          price = Math.max(2, price + drift);
+          out.push({ t, c: +price.toFixed(2) });
+        }
+        return out;
+      }
+
+      // Precompute series for each stock
+      const SERIES = {};
+      for (const k of Object.keys(STOCKS)) {
+        const base = 100 + Math.random()*300;
+        const daily = genDailySeries(900, base, 2.2); // ~3 years
+        const intraday = genIntradaySeries(390, daily[daily.length-1].c);
+        SERIES[k] = { daily, intraday };
+      }
+
+      // Indicators
+      function SMA(data, n) {
+        const out = Array(data.length).fill(null);
+        let sum = 0;
+        for (let i=0;i<data.length;i++) {
+          sum += data[i];
+          if (i>=n) sum -= data[i-n];
+          if (i>=n-1) out[i] = +(sum/n).toFixed(2);
+        }
+        return out;
+      }
+      function EMA(values, period) {
+        const k = 2/(period+1);
+        const emaArray = [];
+        let prev;
+        values.forEach((v,i) => {
+          if (v==null) { emaArray.push(null); return; }
+          if (i===0 || prev==null) { prev = v; emaArray.push(v); }
+          else { const cur = v*k + prev*(1-k); emaArray.push(+cur.toFixed(2)); prev = cur; }
+        });
+        return emaArray;
+      }
+      function RSI(values, period=14) {
+        const out = Array(values.length).fill(null);
+        let gains=0, losses=0;
+        for (let i=1;i<values.length;i++) {
+          const ch = values[i] - values[i-1];
+          const g = Math.max(ch,0), l = Math.max(-ch,0);
+          if (i<=period) { gains+=g; losses+=l; if (i===period) {
+            const rs = (gains/period) / ((losses/period)||1e-9);
+            out[i] = +(100 - 100/(1+rs)).toFixed(2);
+          }}
+          else {
+            gains = (gains*(period-1) + g)/period;
+            losses = (losses*(period-1) + l)/period;
+            const rs = gains / (losses||1e-9);
+            out[i] = +(100 - 100/(1+rs)).toFixed(2);
+          }
+        }
+        return out;
+      }
+      function MACD(values, fast=12, slow=26, signal=9) {
+        const fastE = EMA(values, fast);
+        const slowE = EMA(values, slow);
+        const macd = values.map((_,i)=> (fastE[i]!=null && slowE[i]!=null) ? +(fastE[i]-slowE[i]).toFixed(2) : null);
+        const valid = macd.map(v=> v==null?null:v);
+        const signalE = EMA(valid, signal);
+        const hist = macd.map((v,i)=> (v!=null && signalE[i]!=null)? +(v - signalE[i]).toFixed(2) : null);
+        return { macd, signal: signalE, hist };
+      }
+
+      // App State
+      const state = {
+        selected: 'AAPL',
+        timeframe: '1D',
+        indicators: { MA: true, RSI: false, MACD: false },
+        drawMode: 'none',
+        side: 'BUY',
+        portfolio: { cash: 100000, positions: {}, history: [] },
+        watchlist: new Set(),
+      };
+
+      // Load from localStorage
+      function loadState() {
+        try {
+          const s = JSON.parse(localStorage.getItem('sg_portfolio'));
+          if (s) state.portfolio = s;
+          const w = JSON.parse(localStorage.getItem('sg_watchlist'));
+          if (w && Array.isArray(w)) state.watchlist = new Set(w);
+        } catch(e){}
+      }
+      function saveState() {
+        localStorage.setItem('sg_portfolio', JSON.stringify(state.portfolio));
+        localStorage.setItem('sg_watchlist', JSON.stringify([...state.watchlist]));
+      }
+
+      // DOM refs
+      const els = {
+        name: document.getElementById('company-name'),
+        ticker: document.getElementById('company-ticker'),
+        sector: document.getElementById('company-sector'),
+        desc: document.getElementById('company-desc'),
+        logo: document.getElementById('company-logo'),
+        price: document.getElementById('live-price'),
+        priceSm: document.getElementById('live-price-sm'),
+        change: document.getElementById('live-change'),
+        changeSm: document.getElementById('live-change-sm'),
+        mcap: document.getElementById('stat-mcap'),
+        pe: document.getElementById('stat-pe'),
+        eps: document.getElementById('stat-eps'),
+        rev: document.getElementById('stat-rev'),
+        fin: {
+          rev: document.getElementById('fin-rev'),
+          gm: document.getElementById('fin-gm'),
+          om: document.getElementById('fin-om'),
+          nm: document.getElementById('fin-nm'),
+          de: document.getElementById('fin-de'),
+          dy: document.getElementById('fin-dy'),
+        },
+        newsList: document.getElementById('news-list'),
+        trending: document.getElementById('trending-list'),
+        discovery: document.getElementById('discovery-list'),
+        search: document.getElementById('global-search'),
+        results: document.getElementById('search-results'),
+        cashSidebar: document.getElementById('sidebar-cash'),
+        addFunds: document.getElementById('add-funds'),
+        timeBtns: Array.from(document.querySelectorAll('.time-btn')),
+        indBtns: Array.from(document.querySelectorAll('.ind-btn')),
+        drawBtns: Array.from(document.querySelectorAll('.draw-btn')),
+        clearDraw: document.getElementById('clear-draw'),
+        watch: document.getElementById('watch-btn'),
+        watchSm: document.getElementById('watch-btn-sm'),
+        trade: {
+          qty: document.getElementById('trade-qty'),
+          price: document.getElementById('trade-price'),
+          cost: document.getElementById('trade-cost'),
+          cash: document.getElementById('trade-cash'),
+          btn: document.getElementById('place-order'),
+          sideBtns: Array.from(document.querySelectorAll('.side-btn')),
+          pos: {
+            tkr: document.getElementById('pos-ticker'),
+            qty: document.getElementById('pos-qty'),
+            avg: document.getElementById('pos-avg'),
+            last: document.getElementById('pos-last'),
+            pl: document.getElementById('pos-pl'),
+            val: document.getElementById('pos-val'),
+          }
+        },
+        rsiWrap: document.getElementById('rsi-container'),
+        macdWrap: document.getElementById('macd-container'),
+        portfolioDrawer: document.getElementById('portfolio-drawer'),
+        closePortfolio: document.getElementById('close-portfolio'),
+        openEducation: document.getElementById('open-education'),
+        educationModal: document.getElementById('education-modal'),
+        closeEducation: document.getElementById('close-education'),
+        eduTitle: document.getElementById('edu-title'),
+        eduContent: document.getElementById('edu-content'),
+        glossarySearch: document.getElementById('glossary-search'),
+        glossaryInput: document.getElementById('glossary-input'),
+        glossaryList: document.getElementById('glossary-list'),
+        refreshTrending: document.getElementById('refresh-trending'),
+        portfolioNav: document.querySelector('[data-nav="portfolio"]'),
+        portfolio: {
+          cash: document.getElementById('port-cash'),
+          value: document.getElementById('port-value'),
+          updated: document.getElementById('port-updated'),
+          positions: document.getElementById('positions-table'),
+          history: document.getElementById('history-table'),
+        }
+      };
+
+      // Search
+      function renderSearchResults(query) {
+        const q = query.trim().toLowerCase();
+        if (!q) { els.results.classList.add('hidden'); els.results.innerHTML=''; return; }
+        const items = Object.values(STOCKS).filter(s => s.ticker.toLowerCase().includes(q) || s.name.toLowerCase().includes(q)).slice(0,8);
+        const html = items.map(s => `
+          <button data-pick="${s.ticker}" class="w-full text-left px-3 py-2 hover:bg-white/5 flex items-center gap-3">
+            <div class="h-8 w-8 rounded-md bg-white/10 ring-1 ring-white/10 flex items-center justify-center text-sm font-semibold">${s.ticker[0]}</div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <div class="text-sm">${s.name}</div>
+                <div class="text-xs text-zinc-400">${s.ticker}</div>
+              </div>
+              <div class="text-xs text-zinc-500">${s.sector}</div>
+            </div>
+          </button>
+        `).join('');
+        els.results.innerHTML = html || `<div class="px-3 py-2 text-sm text-zinc-400">No results</div>`;
+        els.results.classList.remove('hidden');
+        refreshIcons();
+        els.results.querySelectorAll('[data-pick]').forEach(btn=>{
+          btn.addEventListener('click', ()=> { selectStock(btn.dataset.pick); els.results.classList.add('hidden'); els.search.value=''; });
+        });
+      }
+
+      // Discovery
+      const DISCOVERY = {
+        tech: ['AAPL','MSFT','NVDA','AMZN','GOOG','META'],
+        green: ['TSLA','NEE','ENPH','PLUG'],
+        ai: ['NVDA','MSFT','GOOG','META','AMZN','AAPL'],
+      };
+      function renderDiscovery(tag='tech') {
+        const list = DISCOVERY[tag] || [];
+        els.discovery.innerHTML = list.map(t=> `
+          <button data-pick="${t}" class="w-full px-3 py-2 rounded-md border border-white/10 hover:bg-white/5 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-medium">${t}</span>
+              <span class="text-xs text-zinc-400">${STOCKS[t].name}</span>
+            </div>
+            <i data-lucide="chevron-right" class="h-4 w-4 text-zinc-400"></i>
+          </button>
+        `).join('');
+        els.discovery.querySelectorAll('[data-pick]').forEach(b=> b.addEventListener('click', ()=> selectStock(b.dataset.pick)));
+        refreshIcons();
+      }
+
+      // Trending
+      function todayChangePct(ticker) {
+        const intr = SERIES[ticker].intraday;
+        const open = intr[0].c, last = intr[intr.length-1].c;
+        return ((last - open)/open)*100;
+      }
+      function sparkData(ticker, points=50) {
+        const arr = SERIES[ticker].intraday;
+        const start = Math.max(0, arr.length-points);
+        return arr.slice(start).map(p=>p.c);
+      }
+      function renderTrending() {
+        const list = Object.keys(STOCKS)
+          .map(t=>({ t, ch: todayChangePct(t) }))
+          .sort((a,b)=> b.ch - a.ch)
+          .slice(0,6);
+        els.trending.innerHTML = list.map((o,i)=> `
+          <div class="rounded-md border border-white/10 p-3 bg-white/5 hover:bg-white/10 transition group">
+            <div class="flex items-center justify-between">
+              <button data-pick="${o.t}" class="text-sm font-medium hover:underline">${o.t}</button>
+              <span class="text-xs ${o.ch>=0?'text-emerald-300':'text-rose-300'}">${percent(o.ch)}</span>
+            </div>
+            <div class="text-xs text-zinc-400">${STOCKS[o.t].name}</div>
+            <div class="mt-2 h-12">
+              <canvas id="spark-${i}"></canvas>
+            </div>
+          </div>
+        `).join('');
+        els.trending.querySelectorAll('[data-pick]').forEach(b=> b.addEventListener('click', ()=> selectStock(b.dataset.pick)));
+        // build sparklines
+        list.forEach((o,i)=>{
+          const ctx = document.getElementById(`spark-${i}`).getContext('2d');
+          const data = sparkData(o.t, 50);
+          const up = data[data.length-1] >= data[0];
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: data.map((_,i)=>i),
+              datasets: [{
+                data,
+                borderColor: up ? 'rgba(74,222,128,0.9)' : 'rgba(244,63,94,0.9)',
+                borderWidth: 1.5,
+                fill: false,
+                tension: 0.3,
+                pointRadius: 0,
+              }]
+            },
+            options: {
+              responsive: true,
+              animation: false,
+              plugins: { legend: { display:false }, tooltip: { enabled: false } },
+              scales: {
+                x: { display: false },
+                y: { display: false }
+              }
+            }
+          });
+        });
+      }
+
+      // Profile render
+      function renderProfile(ticker) {
+        const s = STOCKS[ticker];
+        els.name.textContent = s.name;
+        els.ticker.textContent = s.ticker;
+        els.sector.textContent = s.sector;
+        els.sector.classList.toggle('hidden', !s.sector);
+        els.desc.textContent = s.description;
+        els.logo.textContent = s.ticker[0];
+        // stats
+        els.mcap.textContent = '$' + fmt0.format(s.financials.mcap) + 'B';
+        els.pe.textContent = s.financials.pe;
+        els.eps.textContent = s.financials.eps;
+        els.rev.textContent = '$' + fmt0.format(s.financials.rev) + 'B';
+        els.fin.rev.textContent = '$' + fmt0.format(s.financials.rev) + 'B';
+        els.fin.gm.textContent = s.financials.gm + '%';
+        els.fin.om.textContent = s.financials.om + '%';
+        els.fin.nm.textContent = s.financials.nm + '%';
+        els.fin.de.textContent = s.financials.de;
+        els.fin.dy.textContent = s.financials.dy + '%';
+        // news
+        els.newsList.innerHTML = s.news.map(n=> `
+          <div class="py-3">
+            <div class="flex items-center justify-between">
+              <div class="text-sm font-medium">${n.title}</div>
+              <span class="text-xs text-zinc-400">${n.time}</span>
+            </div>
+            <div class="text-xs text-zinc-500">${n.src}</div>
+          </div>
+        `).join('') || `<div class="p-3 text-sm text-zinc-400">No news available.</div>`;
+        // watch buttons
+        updateWatchButtons();
+      }
+
+      function updateWatchButtons() {
+        const t = state.selected;
+        const watching = state.watchlist.has(t);
+        const base = 'inline-flex items-center gap-1.5 text-xs px-2.5 py-1.5 rounded-md hover:ring-1 transition';
+        const on = watching ? 'bg-amber-500/10 text-amber-300 hover:bg-amber-500/20 hover:ring-amber-400/40' : 'bg-white/5 hover:bg-white/10 hover:ring-white/10';
+        els.watch.className = base + ' ' + on;
+        els.watchSm.className = base + ' ' + on;
+      }
+
+      // Timeframe data
+      function getTimeframeSeries(ticker, tf) {
+        const D = SERIES[ticker].daily;
+        const I = SERIES[ticker].intraday;
+        if (tf==='1D') return I;
+        if (tf==='1W') return D.slice(-7);
+        if (tf==='1M') return D.slice(-30);
+        if (tf==='1Y') return D.slice(-365);
+        return D;
+      }
+
+      // Chart
+      let priceChart = null;
+      let rsiChart = null;
+      let macdChart = null;
+
+      function gradient(ctx, area, color) {
+        const grad = ctx.createLinearGradient(0, area.top, 0, area.bottom);
+        grad.addColorStop(0, color.replace('1)', '0.35)'));
+        grad.addColorStop(1, color.replace('1)', '0.02)'));
+        return grad;
+      }
+
+      function buildPriceChart() {
+        const canvas = document.getElementById('price-canvas');
+        const ctx = canvas.getContext('2d');
+        const dataSeries = getTimeframeSeries(state.selected, state.timeframe);
+        const labels = dataSeries.map(p => state.timeframe==='1D' ? p.t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) : p.t.toLocaleDateString());
+        const values = dataSeries.map(p => p.c);
+        const up = values[values.length-1] >= values[0];
+
+        // Indicators
+        const sma20 = SMA(values, 20);
+        const sma50 = SMA(values, 50);
+
+        if (priceChart) { priceChart.destroy(); }
+
+        priceChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [
+              {
+                label: 'Price',
+                data: values,
+                borderColor: up ? 'rgba(74,222,128,1)' : 'rgba(244,63,94,1)',
+                borderWidth: 1.5,
+                fill: true,
+                backgroundColor: (context) => {
+                  const { ctx, chart } = context.chart;
+                  const { chartArea } = chart;
+                  if (!chartArea) return null;
+                  return gradient(ctx, chartArea, up ? 'rgba(74,222,128,1)' : 'rgba(244,63,94,1)');
+                },
+                pointRadius: 0,
+                tension: 0.3,
+              },
+              ...(state.indicators.MA ? [
+                {
+                  label: 'SMA 20',
+                  data: sma20,
+                  borderColor: 'rgba(250,204,21,0.9)',
+                  borderWidth: 1,
+                  pointRadius: 0,
+                  tension: 0.3,
+                },
+                {
+                  label: 'SMA 50',
+                  data: sma50,
+                  borderColor: 'rgba(168,85,247,0.9)',
+                  borderWidth: 1,
+                  pointRadius: 0,
+                  tension: 0.3,
+                }
+              ] : [])
+            ]
+          },
+          options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            animation: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                intersect: false,
+                mode: 'index',
+                callbacks: {
+                  label: (ctx) => `${ctx.dataset.label || 'Price'}: ${currency(ctx.parsed.y)}`
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: { color: 'rgba(228,228,231,0.6)', maxTicksLimit: 8 },
+                grid: { color: 'rgba(228,228,231,0.08)' }
+              },
+              y: {
+                ticks: { color: 'rgba(228,228,231,0.6)' },
+                grid: { color: 'rgba(228,228,231,0.08)' }
+              }
+            }
+          }
+        });
+
+        // Update trade estimations
+        updateTradeUI();
+        // Resize overlay to match
+        sizeOverlay();
+      }
+
+      function buildRSI() {
+        const wrap = els.rsiWrap;
+        if (!state.indicators.RSI) { wrap.classList.add('hidden'); if (rsiChart) rsiChart.destroy(); return; }
+        wrap.classList.remove('hidden');
+        const canvas = document.getElementById('rsi-canvas');
+        const ctx = canvas.getContext('2d');
+        const dataSeries = getTimeframeSeries(state.selected, state.timeframe);
+        const values = dataSeries.map(p=>p.c);
+        const labels = dataSeries.map(p => state.timeframe==='1D' ? p.t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) : p.t.toLocaleDateString());
+        const rsi = RSI(values, 14);
+        if (rsiChart) rsiChart.destroy();
+        rsiChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [
+              { label:'RSI', data: rsi, borderColor: 'rgba(59,130,246,1)', borderWidth: 1.2, pointRadius: 0, tension: 0.25 },
+              { label:'70', data: labels.map(()=>70), borderColor: 'rgba(244,63,94,0.6)', borderDash: [4,4], borderWidth: 1, pointRadius: 0 },
+              { label:'30', data: labels.map(()=>30), borderColor: 'rgba(74,222,128,0.6)', borderDash: [4,4], borderWidth: 1, pointRadius: 0 },
+            ]
+          },
+          options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            animation: false,
+            plugins: { legend: { display: false }, tooltip: { mode:'index', intersect:false } },
+            scales: {
+              x: { ticks: { color:'rgba(228,228,231,0.6)', maxTicksLimit: 6 }, grid: { color:'rgba(228,228,231,0.08)' } },
+              y: { ticks: { color:'rgba(228,228,231,0.6)' }, grid: { color:'rgba(228,228,231,0.08)' }, suggestedMin: 0, suggestedMax: 100 }
+            }
+          }
+        });
+      }
+
+      function buildMACD() {
+        const wrap = els.macdWrap;
+        if (!state.indicators.MACD) { wrap.classList.add('hidden'); if (macdChart) macdChart.destroy(); return; }
+        wrap.classList.remove('hidden');
+        const canvas = document.getElementById('macd-canvas');
+        const ctx = canvas.getContext('2d');
+        const dataSeries = getTimeframeSeries(state.selected, state.timeframe);
+        const values = dataSeries.map(p=>p.c);
+        const labels = dataSeries.map(p => state.timeframe==='1D' ? p.t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) : p.t.toLocaleDateString());
+        const m = MACD(values);
+        if (macdChart) macdChart.destroy();
+        macdChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels,
+            datasets: [
+              { type:'line', label:'MACD', data: m.macd, borderColor:'rgba(250,204,21,1)', borderWidth:1.2, pointRadius:0, tension:0.25 },
+              { type:'line', label:'Signal', data: m.signal, borderColor:'rgba(99,102,241,1)', borderWidth:1.2, pointRadius:0, tension:0.25 },
+              { label:'Hist', data: m.hist, backgroundColor: m.hist.map(v => v>=0 ? 'rgba(74,222,128,0.6)':'rgba(244,63,63,0.6)') }
+            ]
+          }
+        });
+      }

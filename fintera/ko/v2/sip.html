@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIP Calculator • Fintera</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    :root {
+      --bg: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+      --surface: rgba(255, 255, 255, 0.05);
+      --surface-hover: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.1);
+      --border-focus: rgba(20, 184, 166, 0.4);
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: linear-gradient(135deg, #14b8a6, #06b6d4);
+      --accent-hover: linear-gradient(135deg, #0d9488, #0891b2);
+      --success: #22c55e;
+      --info: #3b82f6;
+      --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      --shadow-lg: 0 35px 60px -12px rgba(0, 0, 0, 0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(20, 184, 166, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(34, 197, 94, 0.05) 0%, transparent 50%);
+      z-index: -1;
+      animation: backgroundShift 20s ease-in-out infinite;
+    }
+
+    @keyframes backgroundShift {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(0.5deg); }
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(12, 12, 12, 0.8);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: var(--accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+    }
+
+    .back-link:hover {
+      background: var(--surface-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .calculator-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .input-card, .result-card {
+      background: var(--glass);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .input-card:hover, .result-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-focus);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .input-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
+      transform: scale(1.02);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--text-primary);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-hover);
+      transform: translateY(-2px);
+    }
+
+    .result-display {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--surface), var(--glass));
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .result-label {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .result-value {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--success), #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .visualization-section {
+      background: var(--glass);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .chart-container {
+      margin-bottom: 2rem;
+    }
+
+    .chart-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .bar-chart {
+      display: flex;
+      gap: 8px;
+      align-items: flex-end;
+      justify-content: center;
+      height: 200px;
+      padding: 1rem;
+      background: var(--surface);
+      border-radius: 16px;
+    }
+
+    .bar-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .bar-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 160px;
+      justify-content: flex-end;
+    }
+
+    .bar-invested, .bar-gains {
+      width: 24px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .bar-invested {
+      background: linear-gradient(135deg, var(--success), #16a34a);
+    }
+
+    .bar-gains {
+      background: linear-gradient(135deg, var(--info), #1d4ed8);
+    }
+
+    .bar-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table th {
+      background: var(--glass);
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    .data-table tr:hover {
+      background: var(--surface-hover);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .calculator-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .button-group {
+        flex-direction: column;
+      }
+      
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">Fintera</div>
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-section">
+      <h1 class="hero-title">SIP Calculator</h1>
+      <p class="hero-subtitle">Plan your systematic investment journey with our advanced calculator and visualize your wealth growth over time.</p>
+    </section>
+
+    <div class="calculator-wrapper">
+      <div class="input-card">
+        <h2 class="card-title">
+          <span>📊</span>
+          Investment Parameters
+        </h2>
+        
+        <div class="input-group">
+          <label class="input-label">Monthly SIP Amount (₹)</label>
+          <input id="monthly" type="number" class="input-field" placeholder="Enter amount" value="10000">
+        </div>
+        
+        <div class="input-group">
+          <label class="input-label">Expected Annual Return (%)</label>
+          <input id="rate" type="number" class="input-field" step="0.1" placeholder="Enter rate" value="12">
+        </div>
+        
+        <div class="input-group">
+          <label class="input-label">Investment Duration (Years)</label>
+          <input id="years" type="number" class="input-field" placeholder="Enter years" value="10">
+        </div>
+
+        <div class="button-group">
+          <button class="btn btn-primary" onclick="calc()">Calculate Returns</button>
+          <button class="btn btn-secondary" onclick="prefill()">Reset to Default</button>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <h2 class="card-title">
+          <span>💰</span>
+          Investment Results
+        </h2>
+        
+        <div class="result-display">
+          <div class="result-label">Future Value</div>
+          <div class="result-value" id="fv">—</div>
+        </div>
+
+        <div class="stats-grid" id="statsGrid">
+          <div class="stat-item">
+            <div class="stat-value" id="totalInvested">—</div>
+            <div class="stat-label">Total Invested</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="totalGains">—</div>
+            <div class="stat-label">Total Gains</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="roi">—</div>
+            <div class="stat-label">Return on Investment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="visualization-section">
+      <div class="chart-container">
+        <h3 class="chart-title">Yearly Investment vs Gains Breakdown</h3>
+        <div class="bar-chart" id="chart"></div>
+      </div>
+      
+      <div class="table-container">
+        <h3 class="chart-title">Detailed Year-wise Breakdown</h3>
+        <table class="data-table" id="table"></table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function money(v) {
+      return '₹ ' + Number(v).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    function percentage(v) {
+      return Math.round(v) + '%';
+    }
+
+    function prefill() {
+      document.getElementById('monthly').value = 10000;
+      document.getElementById('rate').value = 12;
+      document.getElementById('years').value = 10;
+      calc();
+    }
+
+    function calc() {
+      const m = +document.getElementById('monthly').value;
+      const R = (+document.getElementById('rate').value) / 1200;
+      const n = (+document.getElementById('years').value) * 12;
+      const fvElement = document.getElementById('fv');
+      
+      if (!(m > 0 && n > 0)) {
+        fvElement.textContent = '—';
+        document.getElementById('totalInvested').textContent = '—';
+        document.getElementById('totalGains').textContent = '—';
+        document.getElementById('roi').textContent = '—';
+        return;
+      }
+
+      const future = R ? m * ((Math.pow(1 + R, n) - 1) / R) * (1 + R) : m * n;
+      const totalInvested = Math.min(n, +document.getElementById('years').value * 12) * m;
+      const totalGains = future - totalInvested;
+      const roiPercent = ((future - totalInvested) / totalInvested) * 100;
+
+      fvElement.textContent = money(future);
+      document.getElementById('totalInvested').textContent = money(totalInvested);
+      document.getElementById('totalGains').textContent = money(totalGains);
+      document.getElementById('roi').textContent = percentage(roiPercent);
+
+      const pts = [];
+      let value = 0;
+      for (let y = 1; y <= Math.ceil(n / 12); y++) {
+        for (let i = 0; i < 12 && (y - 1) * 12 + i < n; i++) {
+          value = value * (1 + R) + m;
+        }
+        pts.push({
+          y: y,
+          invested: Math.min(y * 12, n) * m,
+          value: value
+        });
+      }
+
+      renderBars(pts);
+      renderTable(pts);
+    }
+
+    function renderBars(pts) {
+      const max = Math.max(...pts.map(p => p.value), 1);
+      const chart = document.getElementById('chart');
+      
+      chart.innerHTML = pts.map(p => {
+        const invested = p.invested;
+        const gains = p.value - invested;
+        const total = invested + gains;
+        const maxHeight = 160;
+        const heightInvested = Math.max(4, Math.round((invested / max) * maxHeight));
+        const heightGains = Math.max(4, Math.round((gains / max) * maxHeight));
+
+        return `
+          <div class="bar-group">
+            <div class="bar-container">
+              <div class="bar-gains" style="height: ${heightGains}px;"></div>
+              <div class="bar-invested" style="height: ${heightInvested}px;"></div>
+            </div>
+            <div class="bar-label">Y${p.y}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderTable(pts) {
+      const table = document.getElementById('table');
+      const rows = pts.map(p => `
+        <tr>
+          <td>Year ${p.y}</td>
+          <td>${money(p.invested)}</td>
+          <td>${money(p.value - p.invested)}</td>
+          <td><strong>${money(p.value)}</strong></td>
+        </tr>
+      `).join('');
+
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Total Invested</th>
+            <th>Gains</th>
+            <th>Portfolio Value</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      `;
+    }
+
+    // Auto-calculate on input change
+    document.getElementById('monthly').addEventListener('input', calc);
+    document.getElementById('rate').addEventListener('input', calc);
+    document.getElementById('years').addEventListener('input', calc);
+
+    // Initial calculation
+    calc();
+  </script>
+</body>
+</html>

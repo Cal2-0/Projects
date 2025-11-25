@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fintera - Premium Financial Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1a1a1a;
+            --bg-card: #1f1f1f;
+            --bg-hover: #2a2a2a;
+            
+            --accent-teal: #14b8a6;
+            --accent-gold: #fbbf24;
+            --accent-purple: #a78bfa;
+            
+            --text-primary: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --text-muted: #6b7280;
+            
+            --border-color: #2a2a2a;
+            --shadow-glow: 0 0 40px rgba(20, 184, 166, 0.15);
+            --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.5);
+            
+            --card-w: 380px;
+            --card-h: 260px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-teal);
+            border-radius: 4px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00ff94, #00d4aa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            cursor: pointer;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.75rem 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-1px);
+        }
+
+        .nav-link.active {
+            color: #00ff94;
+            background: rgba(0, 255, 148, 0.1);
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.2rem;
+        }
+
+        .icon-btn:hover {
+            background: var(--bg-hover);
+            color: var(--accent-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(20, 184, 166, 0.2);
+        }
+
+        /* Main Container */
+        .main-container {
+            margin-top: 80px;
+            min-height: 100vh;
+        }
+
+        /* Hero Chatbot Section */
+        .hero-section {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 3rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .chatbot-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .chatbot-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .chatbot-title h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .chatbot-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .chat-input-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-card);
+            transition: all 0.3s ease;
+        }
+
+        .chat-input-wrapper:focus-within {
+            border-color: var(--accent-teal);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .chat-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            outline: none;
+        }
+
+        .chat-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .typing-indicator {
+            display: none;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .typing-indicator.active {
+            display: block;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Suggestion Tiles */
+        .suggestions-section {
+            padding: 2rem;
+            background: var(--bg-primary);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .suggestions-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            justify-content: center;
+            text-align: center;
+        }
+
+        .suggestions-carousel {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            scroll-snap-type: x mandatory;
+            justify-content: center;
+        }
+
+        .suggestion-tile {
+            flex: 0 0 280px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            scroll-snap-align: start;
+        }
+
+        .suggestion-tile:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-teal);
+            box-shadow: 0 20px 40px rgba(20, 184, 166, 0.2);
+        }
+
+        .suggestion-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .suggestion-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .suggestion-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Tools Sections */
+        .tools-section {
+            padding: 3rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+
+        .section-tabs {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--bg-tertiary);
+            padding: 0.25rem;
+            border-radius: 12px;
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .tab-btn.active {
+            background: var(--bg-card);
+            color: var(--accent-teal);
+        }
+
+        .tab-btn:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
+        /* Product Cards */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            min-height: var(--card-h);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-teal), var(--accent-purple));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--border-color);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .bank-logo {
+            width: 60px;
+            height: 40px;
+            background: var(--bg-hover);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background: var(--bg-hover);
+            color: var(--accent-teal);
+            border-color: var(--accent-teal);
+        }
+
+        .action-btn.active {
+            background: var(--accent-teal);
+            color: var(--bg-primary);
+            border-color: var(--accent-teal);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-teal);
+        }
+
+        .benefits-list {
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .benefit-icon {
+            color: var(--accent-gold);
+        }
+
+        .apply-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(20, 184, 166, 0.3);
+        }
+
+        /* Calculator Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2rem;
+            width: 95%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-hover);
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--accent-teal);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .calc-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            background: var(--bg-secondary);
+            padding: 0.25rem;
+            border-radius: 12px;
+        }
+
+        .calc-tab {
+            flex: 1;
+            padding: 0.5rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .calc-tab.active {
+            background: var(--bg-card);
+            color: var(--accent-teal);
+        }
+
+        .calc-input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .calc-label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .calc-input {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .calc-input:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+        }
+
+        .calc-result {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .hero-section {
+                padding: 2rem 1rem 3rem;
+            }
+
+            .chatbot-title h1 {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .suggestion-tile {
+                flex: 0 0 240px;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.6rem 1rem;
+            border-radius: 999px;
+            display: none;
+            z-index: 1200;
+            box-shadow: var(--shadow-card);
+            font-size: 0.9rem;
+        }
+
+        /* Products as horizontal carousels */
+        .products-carousel {
+            display: block;
+            overflow: hidden;
+            padding: 0.25rem 3.0rem; /* space for side arrows */
+            position: relative;
+        }
+        .products-carousel .carousel-track {
+            display: flex;
+            gap: 1rem;
+            will-change: transform;
+            transition: transform 400ms ease;
+        }
+        .products-carousel .product-card {
+            flex: 0 0 var(--card-w);
+        }
+        .carousel-nav {
+            pointer-events: none;
+        }
+        .carousel-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(26,26,26,.9);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            pointer-events: auto;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 5;
+        }
+        .carousel-btn.left { left: 0.75rem; }
+        .carousel-btn.right { right: 0.75rem; }
+        .carousel-btn:hover { color: var(--accent-teal); background: var(--bg-hover); }
+
+        .top-tabs {
+            position: sticky;
+            top: 64px;
+            z-index: 90;
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+            background: rgba(10,10,10,.65);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: .5rem 2rem;
+        }
+        .top-tab {
+            padding: .4rem .9rem;
+            border-radius: 999px;
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            font-size: .95rem;
+        }
+        .top-tab.active { color: var(--accent-teal); background: var(--bg-card); }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo" onclick="location.href='v2.html'">Fintera</div>
+            <div class="header-actions">
+                <div class="nav-links">
+                    <a href="v2.html" class="nav-link">Home</a>
+                    <a href="learn.html" class="nav-link">Finance Guide</a>
+                    <a href="index.html" class="nav-link active">Tools</a>
+                    <a href="stock.html" class="nav-link">Stocks</a>
+                </div>
+                <button type="button" class="icon-btn" data-tool="emi" onclick="location.href='emi.html'" title="EMI Calculator"><span>📄</span></button>
+                <button type="button" class="icon-btn" data-tool="sip" onclick="location.href='sip.html'" title="SIP Calculator"><span>📈</span></button>
+                <button type="button" class="icon-btn" data-tool="retire" onclick="window.openTool('retire')" title="Retirement Planner"><span>👴</span></button>
+                <button type="button" class="icon-btn" data-tool="fuel" onclick="window.openTool('fuel')" title="Fuel Cost"><span>⛽</span></button>
+                <button type="button" class="icon-btn" data-tool="goal" onclick="window.openTool('goal')" title="Goal Planner"><span>🎯</span></button>
+                <button type="button" class="icon-btn" data-tool="compare" onclick="toggleCompareModal(true); renderCompareTable();" title="Comparison"><span>⚖️</span></button>
+                <button class="icon-btn" onclick="showFavorites()" title="Favorites">
+                    <span>⭐</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <div id="services-root">
+        <!-- Hero Chatbot Section -->
+        <section class="hero-section">
+            <div class="chatbot-container">
+                <div class="chatbot-title">
+                    <h1>Your Financial Assistant</h1>
+                    <p>Ask anything about loans, cards, or investments</p>
+                </div>
+                <div class="chat-input-wrapper">
+                    <input type="text" class="chat-input" placeholder="Ask Fintera... e.g., 'best cashback card' or 'plan SIP for ₹20k'" onkeypress="handleChatInput(event)">
+                    <div class="typing-indicator">Fintera is thinking...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Suggestions -->
+        <section class="suggestions-section">
+            <div class="suggestions-header">
+                <span>✨</span>
+                <span>You may like</span>
+            </div>
+            <div class="suggestions-carousel" id="suggestions-carousel">
+                <div class="suggestion-tile" onclick="scrollToSection('cards')">
+                    <div class="suggestion-icon">💳</div>
+                    <div class="suggestion-title">Best Cashback Card</div>
+                    <div class="suggestion-subtitle">Up to 5% cashback on all purchases</div>
+                </div>
+                <div class="suggestion-tile" onclick="scrollToSection('loans')">
+                    <div class="suggestion-icon">🏠</div>
+                    <div class="suggestion-title">Home Loan Offers</div>
+                    <div class="suggestion-subtitle">Starting from 8.5% p.a.</div>
+                </div>
+                <div class="suggestion-tile" onclick="scrollToSection('investments')">
+                    <div class="suggestion-icon">📈</div>
+                    <div class="suggestion-title">Top SIP Funds</div>
+                    <div class="suggestion-subtitle">15%+ CAGR returns</div>
+                </div>
+                <div class="suggestion-tile" onclick="scrollToSection('tax')">
+                    <div class="suggestion-icon">🧾</div>
+                    <div class="suggestion-title">Tax Calculator</div>
+                    <div class="suggestion-subtitle">Calculate your tax liability</div>
+                </div>
+                <div class="suggestion-tile" onclick="scrollToSection('loans')">
+                    <div class="suggestion-icon">🎓</div>
+                    <div class="suggestion-title">Student Loans</div>
+                    <div class="suggestion-subtitle">Education financing from 9.5% p.a.</div>
+                </div>
+                <div class="suggestion-tile" onclick="location.href='learn.html'">
+                    <div class="suggestion-icon">📚</div>
+                    <div class="suggestion-title">Financial Learning</div>
+                    <div class="suggestion-subtitle">Master money management skills</div>
+                </div>
+                <div class="suggestion-tile" onclick="openCalculator('retirement')">
+                    <div class="suggestion-icon">🏖️</div>
+                    <div class="suggestion-title">Retirement Planner</div>
+                    <div class="suggestion-subtitle">Plan your golden years</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Credit Cards Section -->
+        <section class="tools-section" id="cards">
+            <div class="section-header">
+                <h2 class="section-title">Credit Cards</h2>
+                <div class="section-tabs">
+                    <button class="tab-btn active">All</button>
+                    <button class="tab-btn">Travel</button>
+                    <button class="tab-btn">Cashback</button>
+                    <button class="tab-btn">Luxury</button>
+                    <button class="tab-btn">Fuel</button>
+                    <button class="tab-btn">Student</button>
+                </div>
+            </div>
+            <div class="products-grid products-carousel" id="cards-carousel"></div>
+        </section>
+
+        <!-- Loans Section -->
+        <section class="tools-section" id="loans">
+            <div class="section-header">
+                <h2 class="section-title">Loans</h2>
+                <div class="section-tabs">
+                    <button class="tab-btn active">All</button>
+                    <button class="tab-btn">Home</button>
+                    <button class="tab-btn">Car</button>
+                    <button class="tab-btn">Personal</button>
+                    <button class="tab-btn">Education</button>
+                </div>
+            </div>
+            <div class="products-grid products-carousel" id="loans-carousel"></div>
+        </section>
+
+        <!-- Investments Section -->
+        <section class="tools-section" id="investments">
+            <div class="section-header">
+                <h2 class="section-title">Investments</h2>
+                <div class="section-tabs">
+                    <button class="tab-btn active">All</button>
+                    <button class="tab-btn">Index</button>
+                    <button class="tab-btn">Debt</button>
+                    <button class="tab-btn">Tech</button>
+                </div>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="card-header">
+                        <div class="bank-logo">BLU</div>
+                        <div class="card-actions">
+                            <button class="action-btn" onclick="toggleStar(this)" title="Save">⭐</button>
+                            <button class="action-btn" onclick="toggleCompare(this)" title="Compare">✓</button>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Index Growth</h3>
+                    <p class="card-subtitle">Broad market exposure</p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Return (CAGR)</span>
+                            <span class="stat-value">10.5%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Risk</span>
+                            <span class="stat-value">Moderate</span>
+                        </div>
+                    </div>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <span class="benefit-icon">📊</span>
+                            <span>Diversified across sectors</span>
+                        </div>
+                        </div>
+                    <button class="apply-btn">Invest</button>
+                        </div>
+                <div class="product-card">
+                    <div class="card-header">
+                        <div class="bank-logo">AERO</div>
+                        <div class="card-actions">
+                            <button class="action-btn" onclick="toggleStar(this)" title="Save">⭐</button>
+                            <button class="action-btn" onclick="toggleCompare(this)" title="Compare">✓</button>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Bond Shield</h3>
+                    <p class="card-subtitle">Stable income</p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Return (CAGR)</span>
+                            <span class="stat-value">5.2%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Risk</span>
+                            <span class="stat-value">Low</span>
+                        </div>
+                    </div>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🛡️</span>
+                            <span>Capital preservation focus</span>
+                        </div>
+                        </div>
+                    <button class="apply-btn">Invest</button>
+                        </div>
+                    </div>
+        </section>
+               
+    </main>
+
+    <div class="toast" id="toast">Saved</div>
+
+    <!-- Modern Calculator Modal -->
+    <div class="modal" id="calculator-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Financial Calculator</h2>
+                <button class="modal-close" onclick="toggleModal('calculator')">✕</button>
+            </div>
+            <div class="calc-tabs">
+                <button class="calc-tab active" data-calc="emi" onclick="switchCalcTab(this)">EMI</button>
+                <button class="calc-tab" data-calc="sip" onclick="switchCalcTab(this)">SIP</button>
+                <button class="calc-tab" data-view="chart" onclick="switchCalcView(this)">Chart</button>
+                <button class="calc-tab" data-view="table" onclick="switchCalcView(this)">Table</button>
+            </div>
+            
+            <!-- EMI Calculator -->
+            <div id="calc-emi">
+                <div class="calc-input-group">
+                    <label class="calc-label">Loan Amount (₹)</label>
+                    <input id="emi-amount" type="number" class="calc-input" placeholder="1000000" value="1000000" oninput="calcEMI()">
+                </div>
+                <div class="calc-input-group">
+                    <label class="calc-label">Interest Rate (% p.a.)</label>
+                    <input id="emi-rate" type="number" class="calc-input" step="0.1" placeholder="8.5" value="8.5" oninput="calcEMI()">
+                </div>
+                <div class="calc-input-group">
+                    <label class="calc-label">Loan Tenure (Years)</label>
+                    <input id="emi-years" type="number" class="calc-input" placeholder="20" value="20" oninput="calcEMI()">
+                </div>
+                <div class="calc-result">
+                    <div class="result-value" id="emi-value">—</div>
+                    <div class="result-label">Monthly EMI</div>
+                </div>
+                <div id="emi-chart" class="calc-result" style="margin-top: 1rem;"></div>
+                <div id="emi-table" class="calc-result" style="margin-top: 1rem;"></div>
+            </div>
+            
+            <!-- SIP Calculator -->
+            <div id="calc-sip" style="display: none;">
+                <div class="calc-input-group">
+                    <label class="calc-label">Monthly SIP (₹)</label>
+                    <input id="sip-amount" type="number" class="calc-input" placeholder="10000" value="10000" oninput="calcSIP()">
+                </div>
+                <div class="calc-input-group">
+                    <label class="calc-label">Expected Return (% p.a.)</label>
+                    <input id="sip-rate" type="number" class="calc-input" step="0.1" placeholder="12" value="12" oninput="calcSIP()">
+                </div>
+                <div class="calc-input-group">
+                    <label class="calc-label">Investment Period (Years)</label>
+                    <input id="sip-years" type="number" class="calc-input" placeholder="10" value="10" oninput="calcSIP()">
+                </div>
+                <div class="calc-result">
+                    <div class="result-value" id="sip-value">—</div>
+                    <div class="result-label">Future Value</div>
+                </div>
+                <div id="sip-chart" class="calc-result" style="margin-top: 1rem;"></div>
+                <div id="sip-table" class="calc-result" style="margin-top: 1rem;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compare Modal -->
+    <div class="modal" id="compare-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Compare Products</h2>
+                <button class="modal-close" onclick="toggleCompareModal(false)">✕</button>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
+                    <input type="checkbox" id="cmp-diff" onchange="renderCompareTable()">
+                    Show differences only
+                </label>
+            </div>
+            <div id="compare-table"></div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        const LS_FAV = 'fintera:favorites:v1';
+        const LS_CMP = 'fintera:compare:v1';
+        const LS_SESS = 'fintera:session:v1';
+        const favorites = new Set(JSON.parse(localStorage.getItem(LS_FAV) || '[]'));
+        let compareItems = JSON.parse(localStorage.getItem(LS_CMP) || '[]');
+        let sessionTags = JSON.parse(localStorage.getItem(LS_SESS) || '[]');
+
+        function persist() {
+            localStorage.setItem(LS_FAV, JSON.stringify([...favorites]));
+            localStorage.setItem(LS_CMP, JSON.stringify(compareItems));
+            localStorage.setItem(LS_SESS, JSON.stringify(sessionTags.slice(0,20)));
+        }
+
+        function closestCard(el) { return el.closest('.product-card'); }
+        function cardData(card) {
+            const title = card.querySelector('.card-title')?.textContent.trim() || '';
+            const subtitle = card.querySelector('.card-subtitle')?.textContent.trim() || '';
+            const section = card.closest('.tools-section')?.id || '';
+            const stats = {};
+            card.querySelectorAll('.card-stats .stat-item').forEach(item => {
+                const k = item.querySelector('.stat-label')?.textContent.trim();
+                const v = item.querySelector('.stat-value')?.textContent.trim();
+                if (k) stats[k] = v || '-';
+            });
+            const pros = [];
+            card.querySelectorAll('.benefits-list .benefit-item').forEach(b => pros.push(b.textContent.trim()));
+            return { title, subtitle, section, stats, pros };
+        }
+
+        function showTyping(show) {
+            const t = document.querySelector('.typing-indicator');
+            if (!t) return; t.classList.toggle('active', !!show);
+        }
+
+        function handleChatInput(e) {
+            if (e.key !== 'Enter') return;
+            const q = e.target.value.trim().toLowerCase();
+            if (!q) return;
+            showTyping(true);
+            setTimeout(()=>{
+                showTyping(false);
+                routeQuery(q);
+            }, 500);
+        }
+
+        function routeQuery(q) {
+            if (/emi|loan calc|calculator/.test(q)) { toggleModal('calculator'); switchCalc('emi'); tagSession('tools'); return; }
+            if (/sip|invest.*calc/.test(q)) { toggleModal('calculator'); switchCalc('sip'); tagSession('tools'); return; }
+            if (/card|cashback|travel/.test(q)) { scrollToSection('cards'); tagSession('cards'); return; }
+            if (/loan|apr|home|personal/.test(q)) { scrollToSection('loans'); tagSession('loans'); return; }
+            if (/invest|fund|bond|index|sip/.test(q)) { scrollToSection('investments'); tagSession('investments'); return; }
+            scrollToSection('cards');
+        }
+
+        function tagSession(tag) {
+            sessionTags = [tag, ...sessionTags.filter(t=>t!==tag)];
+            persist();
+            buildSuggestions(); // Rebuild suggestions based on new session
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function toggleStar(btn) {
+            const card = closestCard(btn);
+            const data = cardData(card);
+            const key = data.section + '::' + data.title;
+            if (favorites.has(key)) favorites.delete(key); else favorites.add(key);
+            btn.classList.toggle('active', favorites.has(key));
+            card.setAttribute('data-fav', favorites.has(key) ? '1' : '0');
+            persist();
+        }
+
+        function toast(msg) {
+            const t = document.getElementById('toast');
+            if (!t) return;
+            t.textContent = msg;
+            t.style.display = 'block';
+            clearTimeout(window.__toastTimer);
+            window.__toastTimer = setTimeout(()=>{ t.style.display='none'; }, 1700);
+        }
+
+        function buildSuggestions() {
+            const container = document.getElementById('suggestions-carousel');
+            if (!container) return;
+            const focus = sessionTags.find(t => ['investments','loans','cards'].includes(t)) || 'cards';
+            const items = focus === 'investments' ? [
+                { icon:'📈', title:'Index Growth', sub:'10.5% CAGR • Moderate', to:'investments' },
+                { icon:'🛡️', title:'Bond Shield', sub:'5.2% CAGR • Low', to:'investments' }
+            ] : focus === 'loans' ? [
+                { icon:'🏠', title:'Home Loan Offers', sub:'8.5% p.a. • up to 30y', to:'loans' },
+                { icon:'💼', title:'Personal Flexi', sub:'Quick digital approval', to:'loans' }
+            ] : [// Credit Cards
+{ icon:'💳', title:'Best Cashback Card', sub:'Up to 5% categories', to:'cards' },
+{ icon:'✈️', title:'Travel Premium', sub:'Lounge + miles', to:'cards' },
+{ icon:'📈', title:'Top SIPs', sub:'High-performing mutual funds', to:'investments' },
+
+// Debit / Bank Accounts
+{ icon:'🏦', title:'Savings Account Bonus', sub:'Zero balance + rewards', to:'debit' },
+
+
+            ];
+            container.innerHTML = items.map(i => `
+                <div class="suggestion-tile" onclick="scrollToSection('${i.to}')">
+                    <div class="suggestion-icon">${i.icon}</div>
+                    <div class="suggestion-title">${i.title}</div>
+                    <div class="suggestion-subtitle">${i.sub}</div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCompare(btn) {
+            const card = closestCard(btn);
+            const data = cardData(card);
+            const key = data.section + '::' + data.title;
+            const idx = compareItems.findIndex(x => x.key === key);
+            if (idx >= 0) { compareItems.splice(idx,1); btn.classList.remove('active'); toast('Removed from Compare'); }
+            else {
+                if (compareItems.length >= 3) { toast('Limit 3 items'); return; }
+                compareItems.push({ key, ...data });
+                btn.classList.add('active');
+                toast('Added to Compare');
+            }
+            persist();
+            if (compareItems.length >= 2) { toggleCompareModal(true); renderCompareTable(); }
+        }
+
+        function toggleCompareModal(show) {
+            const m = document.getElementById('compare-modal');
+            if (!m) return;
+            m.classList.toggle('active', !!show);
+        }
+
+        function renderCompareTable() {
+            const wrap = document.getElementById('compare-table');
+            const showDiff = document.getElementById('cmp-diff')?.checked;
+            if (!wrap) return;
+            const items = compareItems;
+            if (!items.length) { wrap.innerHTML = '<div class="result-label">Add items to compare.</div>'; return; }
+            const allKeys = new Set();
+            items.forEach(it => Object.keys(it.stats).forEach(k => allKeys.add(k)));
+            let html = '<table style="width:100%; border-collapse: collapse;">';
+            html += '<thead><tr><th style="text-align:left; padding:8px; border-bottom:1px solid var(--border-color);">Attribute</th>' + items.map(it => `<th style=\"text-align:left; padding:8px; border-bottom:1px solid var(--border-color);\">${it.title}</th>`).join('') + '</tr></thead><tbody>';
+            function row(label, getter) {
+                const vals = items.map(getter);
+                const same = vals.every(v => v === vals[0]);
+                if (showDiff && same) return '';
+                return `<tr><td style=\"padding:8px; color: var(--text-secondary);\">${label}</td>` + vals.map(v => `<td style=\"padding:8px;\">${v || '-'}</td>`).join('') + '</tr>';
+            }
+            html += row('Section', it => it.section);
+            html += row('Subtitle', it => it.subtitle);
+            allKeys.forEach(k => { html += row(k, it => it.stats[k] || '-'); });
+            html += '</tbody></table>';
+            wrap.innerHTML = html;
+        }
+
+        function toggleModal(which) {
+            if (which !== 'calculator') return;
+            const m = document.getElementById('calculator-modal');
+            m.classList.toggle('active');
+        }
+
+        function switchCalcTab(btn) {
+            document.querySelectorAll('.calc-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const type = btn.getAttribute('data-calc');
+            switchCalc(type);
+        }
+        function switchCalc(type) {
+            document.getElementById('calc-emi').style.display = (type==='emi') ? '' : 'none';
+            document.getElementById('calc-sip').style.display = (type==='sip') ? '' : 'none';
+            document.querySelectorAll('.calc-tab').forEach(b => b.classList.toggle('active', b.getAttribute('data-calc')===type || b.getAttribute('data-view')==='chart'));
+            switchCalcView(document.querySelector('.calc-tab[data-view="chart"]'));
+        }
+
+        function switchCalcView(btn) {
+            if (!btn) return;
+            const view = btn.getAttribute('data-view');
+            document.querySelectorAll('.calc-tab[data-view]').forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+            const isEMI = document.getElementById('calc-emi').style.display !== 'none';
+            const prefix = isEMI ? 'emi' : 'sip';
+            document.getElementById(prefix+'-chart').style.display = (view==='chart') ? '' : 'none';
+            document.getElementById(prefix+'-table').style.display = (view==='table') ? '' : 'none';
+        }
+
+        function calcEMI() {
+            const P = parseFloat(document.getElementById('emi-amount').value || '0');
+            const r = parseFloat(document.getElementById('emi-rate').value || '0') / 1200;
+            const n = parseInt(document.getElementById('emi-years').value || '0') * 12;
+            if (!(P>0 && n>0)) { document.getElementById('emi-value').textContent = '—'; return; }
+            const emi = r ? P * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1) : P/n;
+            document.getElementById('emi-value').textContent = '₹ ' + emi.toFixed(2);
+            // Build yearly schedule
+            const years = Math.ceil(n/12);
+            let balance = P; let totalInterest = 0; const points = [];
+            for (let y=1; y<=years; y++) {
+                let interestY = 0, principalY = 0;
+                for (let m=1; m<=12 && (y-1)*12+m<=n; m++) {
+                    const interestM = balance * r;
+                    const principalM = emi - interestM;
+                    balance -= principalM;
+                    interestY += interestM; principalY += principalM;
+                }
+                totalInterest += interestY;
+                points.push({ year: y, principal: Math.max(principalY,0), interest: Math.max(interestY,0), balance: Math.max(balance,0) });
+            }
+            renderYearBars('emi-chart', points.map(p=>p.principal), points.map(p=>p.interest), 'Principal', 'Interest');
+            renderYearTable('emi-table', points, ['Year','Principal','Interest','Balance'], (p)=>[
+                p.year, money(p.principal), money(p.interest), money(p.balance)
+            ]);
+            switchCalcView(document.querySelector('.calc-tab[data-view].active') || document.querySelector('.calc-tab[data-view="chart"]'));
+        }
+
+        function calcSIP() {
+            const m = parseFloat(document.getElementById('sip-monthly').value || '0');
+            const R = parseFloat(document.getElementById('sip-rate').value || '0') / 1200;
+            const n = parseInt(document.getElementById('sip-years').value || '0') * 12;
+            if (!(m>0 && n>0)) { document.getElementById('sip-value').textContent = '—'; return; }
+            const fv = R ? m * (Math.pow(1+R, n) - 1) / R * (1+R) : m * n;
+            document.getElementById('sip-value').textContent = '₹ ' + fv.toFixed(2);
+            // Yearly growth
+            const years = Math.ceil(n/12); const points = []; let value = 0;
+            for (let y=1; y<=years; y++) {
+                for (let mth=0; mth<12 && (y-1)*12+mth<n; mth++) {
+                    value = value*(1+R) + m;
+                }
+                points.push({ year: y, invested: Math.min(y*12, n)*m, value });
+            }
+            renderYearBars('sip-chart', points.map(p=>p.invested), points.map(p=>p.value - p.invested), 'Invested', 'Gains');
+            renderYearTable('sip-table', points, ['Year','Invested','Gains','Value'], (p)=>[
+                p.year, money(p.invested), money(p.value - p.invested), money(p.value)
+            ]);
+            switchCalcView(document.querySelector('.calc-tab[data-view].active') || document.querySelector('.calc-tab[data-view="chart"]'));
+        }
+
+        function money(v){ return '₹ ' + Number(v).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+        function renderYearBars(id, seriesA, seriesB, la, lb) {
+            const el = document.getElementById(id); if (!el) return; const max = Math.max(...seriesA.map((v,i)=>v+seriesB[i]));
+            const bars = seriesA.map((a,i)=>{
+                const b = seriesB[i]; const total = a+b; const h = max? Math.max(10, Math.round(total/max*140)):10;
+                const ha = Math.round(a/total*h); const hb = Math.max(2, h-ha);
+                return `<div style="display:grid; gap:6px; justify-items:center;">
+                    <div style="display:grid; align-items:end; height:160px;">
+                        <div style="height:${ha}px; width:28px; background:#22d3ee; border-radius:6px 6px 0 0;"></div>
+                        <div style="height:${hb}px; width:28px; background:#10b981; border-radius:0 0 6px 6px;"></div>
+            </div>
+                    <div class="result-label">Y${i+1}</div>
+                </div>`;
+            }).join('');
+            el.innerHTML = `<div class="result-label" style="margin-bottom:6px;">${la} vs ${lb} (stacked)</div><div style="display:flex; gap:14px;">${bars}</div>`;
+        }
+        function renderYearTable(id, rows, headers, rowMap) {
+            const el = document.getElementById(id); if (!el) return;
+            const head = `<tr>${headers.map(h=>`<th style=\"text-align:left; padding:6px; border-bottom:1px solid var(--border-color);\">${h}</th>`).join('')}</tr>`;
+            const body = rows.map(r=>`<tr>${rowMap(r).map(c=>`<td style=\"padding:6px;\">${c}</td>`).join('')}</tr>`).join('');
+            el.innerHTML = `<div class="result-label" style="margin-bottom:6px;">Yearly breakdown</div><table style="width:100%; border-collapse:collapse;">${head}${body}</table>`;
+        }
+
+        function attachCarouselNav(id, count) {
+            const el = document.getElementById(id);
+            if (!el || el.__navBound) return;
+            const track = el.querySelector('.carousel-track');
+            if (!track) return;
+            el.__navBound = true;
+            const cardWidth = 320 + 16; // width + gap
+            let index = 0;
+            function go(delta) {
+                index = Math.max(0, Math.min(index + delta, Math.max(0, count - Math.floor(el.offsetWidth / cardWidth))));
+                track.style.transform = `translateX(${-index * cardWidth}px)`;
+            }
+            const nav = document.createElement('div');
+            nav.className = 'carousel-nav';
+            nav.style.margin = '8px 0';
+            const left = document.createElement('button'); left.className = 'carousel-btn left'; left.innerText = '◀';
+            const right = document.createElement('button'); right.className = 'carousel-btn right'; right.innerText = '▶';
+            left.addEventListener('click', ()=> go(-1));
+            right.addEventListener('click', ()=> go(1));
+            nav.appendChild(left); nav.appendChild(right);
+            el.parentElement.insertBefore(nav, el);
+            // Resize handler to keep within bounds
+            window.addEventListener('resize', ()=> go(0));
+            go(0);
+        }
+
+        // --- Dynamic rendering from FINTERA_DATA
+        function renderFromData() {
+            try {
+                const D = window.FINTERA_DATA;
+                if (!D) return;
+                // Render Credit Cards by categories into #cards section
+                const cardsSection = document.querySelector('#cards-carousel');
+                if (cardsSection) {
+                    cardsSection.innerHTML = '<div class="carousel-track"></div>';
+                    const track = cardsSection.querySelector('.carousel-track');
+                    const catOrder = ['Travel','Grocery','Fuel','Luxury','Cashback','Student'];
+                    const items = [];
+                    catOrder.forEach(cat => {
+                        (D.cards[cat]||[]).forEach(x => items.push({ cat, ...x }));
+                    });
+                    items.forEach(p => track.appendChild(renderCardProduct(p)));
+                    attachCarouselNav(cardsSection.id, items.length);
+                }
+                // Render Loans
+                const loansGrid = document.querySelector('#loans-carousel');
+                if (loansGrid) {
+                    loansGrid.innerHTML = '<div class="carousel-track"></div>';
+                    const track = loansGrid.querySelector('.carousel-track');
+                    const loanCats = ['Home','Car','Personal','Education'];
+                    const items = [];
+                    loanCats.forEach(cat => (window.FINTERA_DATA.loans[cat]||[]).forEach(x => items.push({ cat, ...x })));
+                    items.forEach(l => track.appendChild(renderLoanProduct(l)));
+                    attachCarouselNav(loansGrid.id, items.length);
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        function renderCardProduct(p) {
+            const node = document.createElement('div');
+            node.className = 'product-card';
+            node.innerHTML = `
+                    <div class="card-header">
+                    <div class="bank-logo">${(p.bank||'?').slice(0,4).toUpperCase()}</div>
+                        <div class="card-actions">
+                            <button class="action-btn" onclick="toggleStar(this)" title="Save">⭐</button>
+                            <button class="action-btn" onclick="toggleCompare(this)" title="Compare">✓</button>
+                        </div>
+                    </div>
+                <h3 class="card-title">${p.name}</h3>
+                <p class="card-subtitle">${p.cat || 'Card'} • ${p.bank}</p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                        <span class="stat-label">Interest</span>
+                        <span class="stat-value">${p.interestPerMonthPct ? p.interestPerMonthPct+'%/mo' : (p.interestPerYearPct? p.interestPerYearPct+'%/yr' : '—')}</span>
+                        </div>
+                        <div class="stat-item">
+                        <span class="stat-label">Annual Fee</span>
+                        <span class="stat-value">${p.annualFee!=null? '₹'+p.annualFee : '—'}</span>
+                        </div>
+                    </div>
+                <div class="benefits-list">${(p.features||[]).slice(0,3).map(f=>`<div class=\"benefit-item\"><span class=\"benefit-icon\">✔</span><span>${f}</span></div>`).join('')}</div>
+                <a class="apply-btn" href="${p.moreInfo||'#'}" target="_blank" rel="noopener">More Info</a>
+            `;
+            return node;
+        }
+
+        function renderLoanProduct(l) {
+            const node = document.createElement('div');
+            node.className = 'product-card';
+            node.innerHTML = `
+                <div class="card-header">
+                    <div class="bank-logo">${(l.bank||'?').slice(0,4).toUpperCase()}</div>
+                    <div class="card-actions">
+                        <button class="action-btn" onclick="toggleStar(this)" title="Save">⭐</button>
+                        <button class="action-btn" onclick="toggleCompare(this)" title="Compare">✓</button>
+                        </div>
+                        </div>
+                <h3 class="card-title">${l.name}</h3>
+                <p class="card-subtitle">${l.cat || 'Loan'} • ${l.bank}</p>
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Rate</span>
+                        <span class="stat-value">${l.ratePct? l.ratePct+'% p.a.' : (l.rateRangePct? l.rateRangePct+'% p.a.' : '—')}</span>
+                        </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Processing Fee</span>
+                        <span class="stat-value">${l.processingFee || '—'}</span>
+                    </div>
+                </div>
+                <div class="benefits-list">${(l.benefits||[]).slice(0,3).map(f=>`<div class=\"benefit-item\"><span class=\"benefit-icon\">✔</span><span>${f}</span></div>`).join('')}</div>
+                <a class="apply-btn" href="${l.moreInfo||'#'}" target="_blank" rel="noopener">More Info</a>
+            `;
+            return node;
+        }
+
+        // Render Investments SIP as carousel
+        (function renderInvestments(){
+            try {
+                const D = window.FINTERA_DATA;
+                const sec = document.querySelector('#investments .products-grid');
+                if (!sec || !D?.investments?.SIP) return;
+                // Replace with carousel container
+                sec.classList.add('products-carousel');
+                sec.innerHTML = '<div class="carousel-track"></div>';
+                const track = sec.querySelector('.carousel-track');
+                D.investments.SIP.forEach(f => track.appendChild(renderInvestProduct(f)));
+                // attach nav using container id
+                if (!sec.id) sec.id = 'investments-carousel';
+                attachCarouselNav(sec.id, D.investments.SIP.length);
+            } catch(e) {}
+        })();
+
+        function renderInvestProduct(it) {
+            const node = document.createElement('div');
+            node.className = 'product-card';
+            const r3 = it.return3yPct!=null? it.return3yPct+'%': (it.returnPct!=null? it.returnPct+'%':'—');
+            const r5 = it.return5yPct!=null? it.return5yPct+'%': (it.return10ySipPct!=null? it.return10ySipPct+'% (10y SIP)':'—');
+            node.innerHTML = `
+                    <div class="card-header">
+                    <div class="bank-logo">${(it.provider||'?').slice(0,4).toUpperCase()}</div>
+                        <div class="card-actions">
+                        <a class="action-btn" href="${it.moreInfo||'#'}" target="_blank" title="More">↗</a>
+                        </div>
+                    </div>
+                <h3 class="card-title">${it.name}</h3>
+                <p class="card-subtitle">${it.category||'SIP'} • ${it.provider||''}</p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                        <span class="stat-label">3Y / 5Y</span>
+                        <span class="stat-value">${r3} / ${r5}</span>
+                        </div>
+                        <div class="stat-item">
+                        <span class="stat-label">Expense</span>
+                        <span class="stat-value">${it.expenseRatioPct!=null? it.expenseRatioPct+'%':'—'}</span>
+                        </div>
+                    </div>
+                <div class="benefits-list">${(it.features||[]).slice(0,3).map(f=>`<div class=\"benefit-item\"><span class=\"benefit-icon\">✔</span><span>${f}</span></div>`).join('')}</div>
+                <a class="apply-btn" href="${it.moreInfo||'#'}" target="_blank" rel="noopener">More Info</a>
+            `;
+            return node;
+        }
+
+        (function initFavs(){
+            document.querySelectorAll('.product-card').forEach(card => {
+                const data = cardData(card);
+                const key = data.section + '::' + data.title;
+                if (favorites.has(key)) {
+                    card.setAttribute('data-fav','1');
+                    card.querySelectorAll('.action-btn').forEach(btn => {
+                        if (btn.getAttribute('title')==='Save') btn.classList.add('active');
+                    });
+                }
+            });
+        })();
+
+        // Build suggestions on load and when session updates
+        document.addEventListener('DOMContentLoaded', () => {
+            buildSuggestions();
+            initSectionTabs();
+            renderCardsCarousel();
+            renderLoansCarousel();
+            renderInvestmentsCarousel();
+        });
+
+        // --- Tabs wiring to filter carousels
+        const TAB_STATE = { cards: 'All', loans: 'All', investments: 'All' };
+
+        function initSectionTabs() {
+            // Cards tabs
+            const cardsTabs = document.querySelectorAll('#cards .section-tabs .tab-btn');
+            cardsTabs.forEach(btn => btn.addEventListener('click', () => {
+                cardsTabs.forEach(b=>b.classList.remove('active'));
+                btn.classList.add('active');
+                TAB_STATE.cards = btn.textContent.trim();
+                renderCardsCarousel();
+            }));
+
+            // Loans tabs
+            const loanTabs = document.querySelectorAll('#loans .section-tabs .tab-btn');
+            loanTabs.forEach(btn => btn.addEventListener('click', () => {
+                loanTabs.forEach(b=>b.classList.remove('active'));
+                btn.classList.add('active');
+                TAB_STATE.loans = btn.textContent.trim();
+                renderLoansCarousel();
+            }));
+
+            // Investments tabs (map Index/Debt/Tech to our SIP categories)
+            const invTabs = document.querySelectorAll('#investments .section-tabs .tab-btn');
+            invTabs.forEach(btn => btn.addEventListener('click', () => {
+                invTabs.forEach(b=>b.classList.remove('active'));
+                btn.classList.add('active');
+                TAB_STATE.investments = btn.textContent.trim();
+                renderInvestmentsCarousel();
+            }));
+        }
+
+        function renderCardsCarousel() {
+            const D = window.FINTERA_DATA || {};
+            const container = document.querySelector('#cards-carousel');
+            if (!container) return;
+            container.classList.add('products-carousel');
+            container.classList.remove('products-grid');
+            container.innerHTML = '<button class="carousel-btn left">◀</button><div class="carousel-track"></div><button class="carousel-btn right">▶</button>';
+            const track = container.querySelector('.carousel-track');
+            const map = { All:'All', Travel: 'Travel', Cashback: 'Cashback', Luxury: 'Luxury', Fuel: 'Fuel', Student: 'Student' };
+            const catKey = map[TAB_STATE.cards] || 'All';
+            let items = [];
+            if (catKey === 'All' && D.cards) {
+                Object.keys(D.cards).forEach(cat => (D.cards[cat]||[]).forEach(x => items.push({cat, ...x})));
+            } else if (D.cards && D.cards[catKey]) {
+                items = D.cards[catKey].map(x=>({cat:catKey, ...x}));
+            }
+            items.forEach(p => track.appendChild(renderCardProduct(p)));
+            attachCarouselNavWithButtons(container, items.length);
+        }
+
+        function renderLoansCarousel() {
+            const D = window.FINTERA_DATA || {};
+            const container = document.querySelector('#loans-carousel');
+            if (!container) return;
+            container.classList.add('products-carousel');
+            container.classList.remove('products-grid');
+            container.innerHTML = '<button class="carousel-btn left">◀</button><div class="carousel-track"></div><button class="carousel-btn right">▶</button>';
+            const track = container.querySelector('.carousel-track');
+            const map = { All:'All', Home:'Home', Car:'Car', Personal:'Personal', Education:'Education' };
+            const catKey = map[TAB_STATE.loans] || 'All';
+            let items = [];
+            if (catKey === 'All' && D.loans) {
+                Object.keys(D.loans).forEach(cat => (D.loans[cat]||[]).forEach(x => items.push({cat, ...x})));
+            } else if (D.loans && D.loans[catKey]) {
+                items = D.loans[catKey].map(x=>({cat:catKey, ...x}));
+            }
+            items.forEach(l => track.appendChild(renderLoanProduct(l)));
+            attachCarouselNavWithButtons(container, items.length);
+        }
+
+        function renderInvestmentsCarousel() {
+            const D = window.FINTERA_DATA;
+            const sec = document.querySelector('#investments .products-grid');
+            if (!sec) return;
+            sec.classList.add('products-carousel');
+            sec.classList.remove('products-grid');
+            sec.innerHTML = '<button class="carousel-btn left">◀</button><div class="carousel-track"></div><button class="carousel-btn right">▶</button>';
+            const track = sec.querySelector('.carousel-track');
+            const tab = TAB_STATE.investments;
+            let predicates = [];
+            if (tab === 'All') predicates = [];
+            else if (tab === 'Index') predicates = [/Large Cap/i, /Bluechip/i, /Flexi Cap/i];
+            else if (tab === 'Debt') predicates = [/Hybrid/i];
+            else if (tab === 'Tech') predicates = [/Sectoral/i, /Thematic/i, /Pharma|Healthcare|Diagnostics/i];
+            const list = (D.investments.SIP||[]).filter(f => !predicates.length || predicates.some(rx => (f.category||'').match(rx)));
+            list.forEach(f => track.appendChild(renderInvestProduct(f)));
+            if (!sec.id) sec.id = 'investments-carousel';
+            attachCarouselNavWithButtons(sec, list.length);
+        }
+
+        function attachCarouselNavWithButtons(container, count) {
+            const track = container.querySelector('.carousel-track');
+            if (!track) return;
+            const cardWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-w')) + 16;
+            let index = 0;
+            function go(delta) {
+                index = Math.max(0, Math.min(index + delta, Math.max(0, count - Math.floor(container.offsetWidth / cardWidth))));
+                track.style.transform = `translateX(${-index * cardWidth}px)`;
+            }
+            const left = container.querySelector('.carousel-btn.left');
+            const right = container.querySelector('.carousel-btn.right');
+            left.onclick = ()=> go(-1);
+            right.onclick = ()=> go(1);
+            window.addEventListener('resize', ()=> go(0));
+            go(0);
+        }
+
+        // Launch tools from cards
+        window.openTool = function(which) {
+            if (which==='emi') { toggleModal('calculator'); switchCalc('emi'); return; }
+            if (which==='sip') { toggleModal('calculator'); switchCalc('sip'); return; }
+            if (which==='retire') openRetirement();
+            if (which==='fuel') openFuel();
+            if (which==='goal') openGoal();
+        }
+
+        // Build tool modals inside existing calculator modal for reuse
+        function openRetirement(){
+            const modal = document.getElementById('calculator-modal');
+            modal.classList.add('active');
+            const panel = modal.querySelector('.modal-content');
+            panel.scrollTop = 0;
+            panel.querySelector('.modal-title').textContent = 'Retirement Planner';
+            panel.querySelector('#calc-emi').style.display='none';
+            panel.querySelector('#calc-sip').style.display='none';
+            let host = document.getElementById('tool-retire-host');
+            if (!host) {
+                host = document.createElement('div'); host.id='tool-retire-host'; host.style.marginTop='1rem';
+                host.innerHTML = `
+                    <div class="tool-row" style="grid-template-columns: repeat(3,1fr); gap:12px;">
+                        <div class="field"><label>Target Corpus (₹)</label><input id="ret_target" type="number" placeholder="10000000"></div>
+                        <div class="field"><label>Years to Retire</label><input id="ret_years" type="number" placeholder="25"></div>
+                        <div class="field"><label>Expected ROI %</label><input id="ret_roi" type="number" step="0.1" placeholder="10"></div>
+                    </div>
+                    <div class="row" style="gap:8px;">
+                        <button class="apply-btn" onclick="calcRetirement()">Calculate</button>
+                        <button class="btn secondary" onclick="prefillRetirement()">Prefill</button>
+                    </div>
+                    <div id="ret_output" class="calc-result"><div class="result-value" id="ret_value">—</div><div class="result-label">Required monthly saving</div></div>
+                    <div id="ret_chart" class="calc-result" style="margin-top:1rem;"></div>
+                    <div id="ret_table" class="calc-result" style="margin-top:1rem;"></div>
+                `;
+                panel.appendChild(host);
+            }
+        }
+        function prefillRetirement(){
+            document.getElementById('ret_target').value = 10000000;
+            document.getElementById('ret_years').value = 25;
+            document.getElementById('ret_roi').value = 10;
+        }
+        function calcRetirement(){
+            const target = +document.getElementById('ret_target').value;
+            const years = +document.getElementById('ret_years').value;
+            const r = (+document.getElementById('ret_roi').value)/1200;
+            const n = years*12;
+            if (!(target>0 && years>0)) return;
+            const m = r ? target * r / (Math.pow(1+r,n)-1) : target/n;
+            document.getElementById('ret_value').textContent = money(m);
+            const pts = []; let value=0; for (let y=1;y<=years;y++){ for(let i=0;i<12;i++){ value = value*(1+r)+m; } pts.push({year:y, invested:m*Math.min(y*12,n), value}); }
+            renderYearBars('ret_chart', pts.map(p=>p.invested), pts.map(p=>p.value - p.invested), 'Invested','Gains');
+            renderYearTable('ret_table', pts, ['Year','Invested','Gains','Value'], p=>[p.year, money(p.invested), money(p.value-p.invested), money(p.value)]);
+        }
+
+        function openFuel(){
+            const modal = document.getElementById('calculator-modal');
+            modal.classList.add('active');
+            const panel = modal.querySelector('.modal-content'); panel.scrollTop = 0; panel.querySelector('.modal-title').textContent='Fuel Cost Calculator';
+            panel.querySelector('#calc-emi').style.display='none'; panel.querySelector('#calc-sip').style.display='none';
+            let host = document.getElementById('tool-fuel-host');
+            if (!host){
+                host = document.createElement('div'); host.id='tool-fuel-host'; host.style.marginTop='1rem';
+                host.innerHTML = `
+                    <div class="tool-row" style="grid-template-columns: repeat(3,1fr); gap:12px;">
+                        <div class="field"><label>Daily Run (km)</label><input id="fuel_km" type="number" placeholder="30"></div>
+                        <div class="field"><label>Mileage (km/l)</label><input id="fuel_mileage" type="number" step="0.1" placeholder="15"></div>
+                        <div class="field"><label>Fuel Price (₹/l)</label><input id="fuel_price" type="number" step="0.1" placeholder="105"></div>
+                    </div>
+                    <div class="row" style="gap:8px;">
+                        <button class="apply-btn" onclick="calcFuel()">Estimate</button>
+                        <button class="btn secondary" onclick="prefillFuel()">Prefill</button>
+                    </div>
+                    <div id="fuel_output" class="calc-result"><div class="result-value" id="fuel_value">—</div><div class="result-label">Monthly / Annual</div></div>
+                    <div id="fuel_chart" class="calc-result" style="margin-top:1rem;"></div>
+                `;
+                panel.appendChild(host);
+            }
+        }
+        function prefillFuel(){ document.getElementById('fuel_km').value=30; document.getElementById('fuel_mileage').value=15; document.getElementById('fuel_price').value=105; }
+        function calcFuel(){
+            const km = +document.getElementById('fuel_km').value; const mil = +document.getElementById('fuel_mileage').value; const price = +document.getElementById('fuel_price').value;
+            if (!(km>0 && mil>0 && price>0)) return;
+            const monthly = (km*30)/mil*price; const annual = monthly*12;
+            document.getElementById('fuel_value').textContent = money(monthly)+' / '+money(annual);
+            const months = Array.from({length:12}, (_,i)=>({label:'M'+(i+1), value: monthly}));
+            const el = document.getElementById('fuel_chart');
+            const max = monthly; el.innerHTML = `<div class="result-label" style="margin-bottom:6px;">Monthly Fuel Spend</div>` +
+                `<div style="display:flex;gap:10px;">${months.map(m=>`<div style=\"display:grid;gap:6px;justify-items:center;\">`+
+                `<div style=\"height:${Math.max(12,Math.round(m.value/max*140))}px;width:22px;background:#f59e0b;border-radius:6px;\"></div>`+
+                `<div class=\"result-label\">${m.label}</div>`+
+                `</div>`).join('')}</div>`;
+        }
+
+        function openGoal(){
+            const modal = document.getElementById('calculator-modal'); modal.classList.add('active');
+            const panel = modal.querySelector('.modal-content'); panel.scrollTop = 0; panel.querySelector('.modal-title').textContent='Goal-Based Savings';
+            panel.querySelector('#calc-emi').style.display='none'; panel.querySelector('#calc-sip').style.display='none';
+            let host = document.getElementById('tool-goal-host');
+            if (!host){
+                host = document.createElement('div'); host.id='tool-goal-host'; host.style.marginTop='1rem';
+                host.innerHTML = `
+                    <div class="tool-row" style="grid-template-columns: repeat(3,1fr); gap:12px;">
+                        <div class="field"><label>Target (₹)</label><input id="goal_target" type="number" placeholder="200000"></div>
+                        <div class="field"><label>Years</label><input id="goal_years" type="number" placeholder="3"></div>
+                        <div class="field"><label>Expected Return %</label><input id="goal_roi" type="number" step="0.1" placeholder="10"></div>
+                    </div>
+                    <div class="row" style="gap:8px;">
+                        <button class="apply-btn" onclick="calcGoal()">Suggest</button>
+                        <button class="btn secondary" onclick="prefillGoal()">Prefill</button>
+                    </div>
+                    <div id="goal_output" class="calc-result"><div class="result-value" id="goal_value">—</div><div class="result-label">Suggested SIP / FD</div></div>
+                `;
+                panel.appendChild(host);
+            }
+        }
+        function prefillGoal(){ document.getElementById('goal_target').value=200000; document.getElementById('goal_years').value=3; document.getElementById('goal_roi').value=10; }
+        function calcGoal(){
+            const target=+document.getElementById('goal_target').value; const years=+document.getElementById('goal_years').value; const r=(+document.getElementById('goal_roi').value)/1200; const n=years*12;
+            if (!(target>0 && years>0)) return; const sip = r? target*r/((Math.pow(1+r,n)-1)*(1+r)) : target/n; const fdMonthly = target/(years*12)*(1/ (1+ (0.07/12))); // simple approx for FD @7%
+            document.getElementById('goal_value').textContent = `SIP ${money(sip)}  •  FD ${money(fdMonthly)}`;
+        }
+
+        // Bind header tool buttons
+        document.addEventListener('click', (e)=>{
+            const btn = e.target.closest('[data-tool]');
+            if (!btn) return;
+            const which = btn.getAttribute('data-tool');
+            if (which==='compare') { toggleCompareModal(true); renderCompareTable(); return; }
+            window.openTool(which);
+        });
+    </script>
+
+</body>
+</html>
+                            

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fintera • Tax</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0e13; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
+        .navbar { position: fixed; top:0; left:0; right:0; height:80px; background: rgba(10,14,19,0.9); backdrop-filter: blur(20px); border-bottom:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:space-between; padding:0 4rem; z-index:1000; }
+        .navbar.scrolled { background: rgba(10,14,19,0.95); border-bottom-color: rgba(0, 212, 170, 0.2); }
+        .logo { font-family:'Space Grotesk',sans-serif; font-size:1.6rem; font-weight:700; background: linear-gradient(135deg,#00ff94,#00d4aa); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+        .nav-links { display:flex; gap:0.5rem; list-style:none; }
+        .nav-link { padding:0.6rem 1.2rem; color:rgba(255,255,255,0.75); text-decoration:none; border-radius:10px; transition: .3s; }
+        .nav-link:hover { background: rgba(255,255,255,0.06); color:#fff; }
+        .nav-link.active { color:#00ff94; background: rgba(0,255,148,0.1); }
+        .hero { padding-top:120px; padding-bottom:40px; background: radial-gradient(circle at 30% 20%, rgba(0,255,148,0.1) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(0,212,170,0.05) 0%, transparent 50%); }
+        .container { max-width:1200px; margin:0 auto; padding:0 4rem; }
+        .title { font-family:'Space Grotesk',sans-serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight:800; background: linear-gradient(135deg,#ffffff,#00ff94); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+        .subtitle { color: rgba(255,255,255,0.8); font-size:1.1rem; margin-top:0.6rem; max-width:900px; }
+        .section { padding: 2rem 0 4rem; }
+        .section h2 { font-family:'Space Grotesk',sans-serif; color:#00ff94; margin-bottom: 1rem; }
+        .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.2rem; margin-top:1rem; }
+        .card { background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.06); border-radius:16px; overflow:hidden; transition:.3s; }
+        .card:hover { transform: translateY(-6px); border-color: rgba(0,255,148,0.25); box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
+        .card img { width:100%; height:160px; object-fit:cover; display:block; }
+        .card-body { padding: 1rem; }
+        .h-scroll { display:grid; grid-auto-flow:column; gap:1rem; overflow-x:auto; padding-bottom:.5rem; }
+        .mini { min-width:260px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius:12px; padding:1rem; }
+        .pill { background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:1rem; }
+        .reveal { opacity:0; transform: translateY(40px); transition: all .8s cubic-bezier(.4,0,.2,1); }
+        .reveal.active { opacity:1; transform: translateY(0); }
+        @media (max-width: 1024px) { .container { padding:0 2rem; } }
+        @media (max-width: 768px) { .container { padding:0 1rem; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">Fintera</div>
+        <ul class="nav-links">
+            <li><a class="nav-link" href="v2.html#home">Home</a></li>
+            <li><a class="nav-link" href="emi.html">EMI</a></li>
+            <li><a class="nav-link" href="sip.html">SIP</a></li>
+            <li><a class="nav-link" href="home-loan.html">Home Loan</a></li>
+            <li><a class="nav-link active" href="#">Tax</a></li>
+            <li><a class="nav-link" href="cards.html">Cards</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1 class="title reveal">Tax Optimization</h1>
+            <p class="subtitle reveal">Plan your taxes with clarity. Compare options for different profiles and pick suitable instruments.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section reveal">
+            <h2>Situational Guides</h2>
+            <div class="h-scroll">
+                <div class="mini"><strong>For Salaried</strong><p>ELSS, EPF, Term Insurance, Health Insurance (80D).</p></div>
+                <div class="mini"><strong>For Small Business</strong><p>PPF, NPS (80CCD 1B), Health Insurance, Depreciation.</p></div>
+                <div class="mini"><strong>For Homeowners</strong><p>Home Loan Interest (24b), Principal (80C), ELSS.</p></div>
+                <div class="mini"><strong>New Tax Regime</strong><p>Lower slab rates; fewer deductions. Compare both regimes annually.</p></div>
+            </div>
+        </section>
+
+        <section class="section reveal">
+            <h2>Popular Instruments</h2>
+            <div class="grid">
+                <div class="card"><img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1200&auto=format&fit=crop" alt="ELSS"/><div class="card-body"><strong>ELSS Funds</strong><p>3-year lock-in; market-linked; tax-saving and growth.</p></div></div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?q=80&w=1200&auto=format&fit=crop" alt="NPS"/><div class="card-body"><strong>NPS</strong><p>Additional 50k (80CCD 1B); retirement-focused; equity/debt mix.</p></div></div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?q=80&w=1200&auto=format&fit=crop" alt="PPF"/><div class="card-body"><strong>PPF</strong><p>15-year, government-backed, tax-free returns; safe and stable.</p></div></div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=1200&auto=format&fit=crop" alt="Insurance"/><div class="card-body"><strong>Health Insurance</strong><p>Protection + 80D deduction; ensure adequate cover for family.</p></div></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const n = document.getElementById('navbar');
+            if (window.scrollY > 100) n.classList.add('scrolled'); else n.classList.remove('scrolled');
+        });
+        const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('active'); } }); }, {threshold:0.1, rootMargin:'0px 0px -50px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+        const FALLBACK = 'https://source.unsplash.com/1200x800/?tax,finance,calculator';
+        document.querySelectorAll('img').forEach(img => { img.loading = 'lazy'; img.addEventListener('error', () => { img.src = FALLBACK; }); });
+    </script>
+</body>
+</html>

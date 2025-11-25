@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variables
+.env
+
+# Model files (optional - uncomment if models are large)
+# *.pt
+# *.pth
+# *.onnx
+
+# Video files (optional - uncomment if you don't want to track videos)
+# *.mp4
+# *.avi
+# *.mov
+
+# Output files
+output/
+results/
+runs/
+
+# Logs
+*.log
