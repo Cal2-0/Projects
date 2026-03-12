@@ -1,0 +1,1222 @@
+[00:00:00.972] Server  LOG     ✓ Ready in 679ms
+[00:00:09.018] Server  ERROR   ⨯ ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css:1373:8
+Parsing CSS source code failed
+  1371 |   }
+  1372 | }
+> 1373 | @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+       |        ^
+  1374 | :root {
+  1375 |   --background: #030712;
+  1376 |   --foreground: #f1f5f9;
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/layout.tsx [Server Component]
+
+
+[00:00:09.934] Browser ERROR   uncaughtError: Error: ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css:1373:8
+Parsing CSS source code failed
+  1371 |   }
+  1372 | }
+> 1373 | @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+       |        ^
+  1374 | :root {
+  1375 |   --background: #030712;
+  1376 |   --foreground: #f1f5f9;
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/layout.tsx [Server Component]
+
+
+[00:00:10.119] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css:1373:8
+Parsing CSS source code failed
+  1371 |   }
+  1372 | }
+> 1373 | @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+       |        ^
+  1374 | :root {
+  1375 |   --background: #030712;
+  1376 |   --foreground: #f1f5f9;
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/layout.tsx [Server Component]
+[00:00:10.394] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css:1373:8
+Parsing CSS source code failed
+  1371 |   }
+  1372 | }
+> 1373 | @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+       |        ^
+  1374 | :root {
+  1375 |   --background: #030712;
+  1376 |   --foreground: #f1f5f9;
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/layout.tsx [Server Component]
+[00:00:39.163] Server  ERROR   ⨯ ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css:1373:8
+Parsing CSS source code failed
+  1371 |   }
+  1372 | }
+> 1373 | @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+       |        ^
+  1374 | :root {
+  1375 |   --background: #030712;
+  1376 |   --foreground: #f1f5f9;
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/layout.tsx [Server Component]
+
+
+[00:00:39.366] Browser ERROR   uncaughtError: Error: ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css:1373:8
+Parsing CSS source code failed
+  1371 |   }
+  1372 | }
+> 1373 | @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+       |        ^
+  1374 | :root {
+  1375 |   --background: #030712;
+  1376 |   --foreground: #f1f5f9;
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/layout.tsx [Server Component]
+
+
+[00:00:39.593] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css:1373:8
+Parsing CSS source code failed
+  1371 |   }
+  1372 | }
+> 1373 | @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+       |        ^
+  1374 | :root {
+  1375 |   --background: #030712;
+  1376 |   --foreground: #f1f5f9;
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/layout.tsx [Server Component]
+[00:00:39.594] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css:1373:8
+Parsing CSS source code failed
+  1371 |   }
+  1372 | }
+> 1373 | @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+       |        ^
+  1374 | :root {
+  1375 |   --background: #030712;
+  1376 |   --foreground: #f1f5f9;
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/layout.tsx [Server Component]
+[00:00:39.777] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css:1373:8
+Parsing CSS source code failed
+  1371 |   }
+  1372 | }
+> 1373 | @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+       |        ^
+  1374 | :root {
+  1375 |   --background: #030712;
+  1376 |   --foreground: #f1f5f9;
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/layout.tsx [Server Component]
+[00:00:39.777] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css:1373:8
+Parsing CSS source code failed
+  1371 |   }
+  1372 | }
+> 1373 | @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+       |        ^
+  1374 | :root {
+  1375 |   --background: #030712;
+  1376 |   --foreground: #f1f5f9;
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/globals.css [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/layout.tsx [Server Component]
+[00:02:01.647] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:01.705] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:01.894] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="/OneDrive/...">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="dark"
+-                         data-jetski-tab-id="626230092"
+                        >
+                  ...
+
+[00:02:02.616] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:02:02.616] Browser WARN    You are trying to animate y from "-100" to "0". "-100" is not an animatable value.. For more information and steps for solving, visit https://motion.dev/troubleshooting/value-not-animatable
+[00:05:49.008] Server  LOG     ✓ Compiled in 88ms
+[00:06:29.125] Server  LOG     ✓ Compiled in 24ms
+[00:10:15.896] Server  LOG     ✓ Compiled in 43ms
+[00:13:05.153] Server  LOG     ✓ Compiled in 58ms
+[00:14:02.688] Server  LOG     ✓ Compiled in 76ms
+[00:15:00.300] Server  LOG     ✓ Compiled in 74ms
+[00:22:04.932] Server  LOG     ✓ Compiled in 71ms
+[00:27:28.375] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:28.558] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="/OneDrive/...">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="dark"
+-                         data-jetski-tab-id="626230092"
+                        >
+                  ...
+
+[00:27:28.558] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:31:58.623] Server  LOG     ✓ Compiled in 44ms
+[00:31:58.725] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'replace')
+[00:31:58.779] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'replace')
+[00:32:33.554] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:32:33.554] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:32:33.735] Server  ERROR   ⨯ TypeError: Cannot read properties of undefined (reading 'replace')
+[00:32:33.749] Server  LOG     ✓ Compiled in 86ms
+[00:32:33.799] Server  ERROR   ⨯ TypeError: Cannot read properties of undefined (reading 'replace')
+[00:32:34.012] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:34.075] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:34.307] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'replace')
+[00:32:34.777] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'replace')
+[00:32:37.504] Server  LOG     ✓ Compiled in 2.3s
+[00:32:37.627] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-client] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:32:37.627] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-ssr] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:32:37.775] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-client] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:32:37.775] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-ssr] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:35:54.469] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-client] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:35:54.469] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-ssr] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:35:54.774] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-client] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:35:54.774] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-ssr] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:37:02.950] Server  ERROR   ⨯ ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-client] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+
+
+./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-ssr] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+
+[00:37:03.224] Browser ERROR   uncaughtError: Error: ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-client] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+
+[00:37:03.452] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-client] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:37:03.452] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-ssr] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:37:03.452] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-client] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:37:03.452] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-ssr] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:37:03.775] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-client] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:37:03.775] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-ssr] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:37:03.775] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-client] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+[00:37:03.775] Browser ERROR   ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx:4:1
+Export TerminalBox doesn't exist in target module
+   2 | import React from "react";
+   3 | import { ProjectCard } from "@/components/ui/project-card";
+>  4 | import {
+     | ^^^^^^^^
+>  5 |   Github,
+     | ^^^^^^^^^
+>  6 |   Linkedin,
+     | ^^^^^^^^^
+>  7 |   Mail,
+     | ^^^^^^^^^
+>  8 |   Phone,
+     | ^^^^^^^^^
+>  9 |   ChevronDown,
+     | ^^^^^^^^^
+> 10 |   MonitorPlay,
+     | ^^^^^^^^^
+> 11 |   BrainCircuit,
+     | ^^^^^^^^^
+> 12 |   Box,
+     | ^^^^^^^^^
+> 13 |   GraduationCap,
+     | ^^^^^^^^^
+> 14 |   ShieldAlert,
+     | ^^^^^^^^^
+> 15 |   KeyRound,
+     | ^^^^^^^^^
+> 16 |   Eye,
+     | ^^^^^^^^^
+> 17 |   TerminalBox
+     | ^^^^^^^^^
+> 18 | } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+  19 |
+  20 | export default function Home() {
+  21 |   const scrollToProjects = () => {
+
+The export TerminalBox was not found in module [project]/OneDrive/Desktop/main/main/Projects/resume/node_modules/lucide-react/dist/esm/lucide-react.js [app-ssr] (ecmascript).
+Did you mean to import Terminal?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/main/main/Projects/resume/src/app/page.tsx [Server Component]
